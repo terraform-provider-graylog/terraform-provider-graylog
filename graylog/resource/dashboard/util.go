@@ -19,6 +19,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	if err != nil {
 		return nil, err
 	}
+	delete(data, keyCreatedAt)
 	return data, nil
 }
 
