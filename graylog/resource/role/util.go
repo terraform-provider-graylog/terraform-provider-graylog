@@ -5,13 +5,17 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
 )
 
-const keyName = "name"
+const (
+	keyName     = "name"
+	keyReadOnly = "read_only"
+)
 
 func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, error) {
 	data, err := convert.GetFromResourceData(d, Resource())
 	if err != nil {
 		return nil, err
 	}
+	delete(data, keyReadOnly)
 	return data, nil
 }
 
