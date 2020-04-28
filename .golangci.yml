@@ -1,0 +1,21 @@
+---
+linters:
+  enable:
+  - deadcode
+  - gofmt
+  - goimports
+  - golint
+  - gosimple
+  - govet
+  - interfacer
+  - maligned
+  - misspell
+  - nakedret
+  - staticcheck
+  - structcheck
+  - unconvert
+  # https://github.com/golangci/golangci-lint/issues/827
+  # - unused
+  - varcheck
+  # - errcheck
+  disable-all: true
