@@ -18,6 +18,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
+	delete(data, keyDefault)
 
 	is, _, err := cl.IndexSet.Create(ctx, data)
 	if err != nil {

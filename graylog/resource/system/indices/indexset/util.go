@@ -9,6 +9,7 @@ const (
 	keyID                = "id"
 	keyRotationStrategy  = "rotation_strategy"
 	keyRetentionStrategy = "retention_strategy"
+	keyDefault           = "default"
 )
 
 func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, error) {
