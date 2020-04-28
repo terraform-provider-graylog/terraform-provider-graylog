@@ -52,6 +52,7 @@ func TestAccStream(t *testing.T) {
   "matching_type": "AND",
   "description": "test",
   "title": "test",
+	"remove_matches_from_default_stream": false,
   "index_set_id": "5e9861442ab79c0012e7d1c4"
 }`,
 			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
@@ -138,6 +139,7 @@ resource "graylog_stream" "test" {
   "matching_type": "AND",
   "description": "test updated",
   "title": "test updated",
+	"remove_matches_from_default_stream": false,
   "index_set_id": "5e9861442ab79c0012e7d1c4"
 }`,
 			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {

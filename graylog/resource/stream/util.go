@@ -11,6 +11,7 @@ const (
 	keyDisabled      = "disabled"
 	keyCreatorUserID = "creator_user_id"
 	keyCreatedAt     = "created_at"
+	keyIsDefault     = "is_default"
 )
 
 func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, error) {
@@ -18,6 +19,9 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	if err != nil {
 		return nil, err
 	}
+	delete(data, keyCreatedAt)
+	delete(data, keyCreatorUserID)
+	delete(data, keyIsDefault)
 	return data, nil
 }
 
