@@ -51,9 +51,11 @@ func TestAccUser(t *testing.T) {
   "username": "test",
   "email": "test@example.com",
   "password": "password",
-	"full_name": "test test",
-	"roles": ["Reader"],
-	"permissions": []
+  "full_name": "test test",
+  "timezone": "",
+  "session_timeout_ms": 0,
+  "roles": ["Reader"],
+  "permissions": []
 }`,
 			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
 				userBody = `{
@@ -147,7 +149,7 @@ resource "graylog_user" "test" {
 				if err := json.NewDecoder(req.Body).Decode(&body); err != nil {
 					t.Fatal(err)
 				}
-				if err := testutil.EqualMapKeys(body, "email", "password", "full_name", "roles", "permissions", "session_timeout_ms", "username"); err != nil {
+				if err := testutil.EqualMapKeys(body, "email", "password", "full_name", "roles", "permissions", "session_timeout_ms", "username", "timezone"); err != nil {
 
 					t.Fatal(err)
 				}
