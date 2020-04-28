@@ -11,7 +11,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
-func TestAccUser(t *testing.T) {
+func TestAccInput(t *testing.T) {
 	if err := testutil.SetEnv(); err != nil {
 		t.Fatal(err)
 	}

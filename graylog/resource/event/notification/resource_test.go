@@ -11,7 +11,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
-func TestAccAmarmCallback(t *testing.T) {
+func TestAccEventNotification(t *testing.T) {
 	if err := testutil.SetEnv(); err != nil {
 		t.Fatal(err)
 	}

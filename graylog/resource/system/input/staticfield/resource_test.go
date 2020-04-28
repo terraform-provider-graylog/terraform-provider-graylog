@@ -13,7 +13,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
-func TestAccStreamOutput(t *testing.T) {
+func TestAccInputStaticFields(t *testing.T) {
 	if err := testutil.SetEnv(); err != nil {
 		t.Fatal(err)
 	}

@@ -11,7 +11,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
-func TestAccPipelineRule(t *testing.T) {
+func TestAccPipelineConnection(t *testing.T) {
 	if err := testutil.SetEnv(); err != nil {
 		t.Fatal(err)
 	}
