@@ -62,6 +62,18 @@ func SingleResourceProviders(name string, rsc *schema.Resource) map[string]terra
 	}
 }
 
+func SingleDataSourceProviders(name string, rsc *schema.Resource) map[string]terraform.ResourceProvider {
+	return map[string]terraform.ResourceProvider{
+		"graylog": &schema.Provider{
+			Schema: provider.SchemaMap(),
+			DataSourcesMap: map[string]*schema.Resource{
+				name: rsc,
+			},
+			ConfigureFunc: provider.Configure,
+		},
+	}
+}
+
 func EqualMapKeys(data map[string]interface{}, keys ...string) error {
 	for _, k := range keys {
 		if _, ok := data[k]; !ok {
