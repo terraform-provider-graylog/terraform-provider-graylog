@@ -2,7 +2,7 @@ package provider
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/config"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/config"
 )
 
 func Configure(d *schema.ResourceData) (interface{}, error) {

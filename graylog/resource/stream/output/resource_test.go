@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/suzuki-shunsuke/flute/flute"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/testutil"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
 func TestAccStreamOutput(t *testing.T) {

@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/util"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
 var stateUpgraderV1 = schema.StateUpgrader{

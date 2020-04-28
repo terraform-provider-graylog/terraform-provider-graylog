@@ -2,9 +2,9 @@ package indexset
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/convert"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/resource/system/indices/indexset"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/util"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/system/indices/indexset"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {

@@ -2,7 +2,7 @@ package widget
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/util"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
 func Resource() *schema.Resource {

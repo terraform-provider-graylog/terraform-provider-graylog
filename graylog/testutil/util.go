@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/suzuki-shunsuke/flute/flute"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/provider"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/provider"
 )
 
 func Header() http.Header {

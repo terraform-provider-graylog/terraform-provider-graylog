@@ -2,7 +2,7 @@ package connection
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/suzuki-shunsuke/terraform-provider-graylog/graylog/convert"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
 )
 
 const keyStreamID = "stream_id"
