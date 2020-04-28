@@ -10,8 +10,10 @@ import (
 )
 
 const (
-	keyID         = "id"
-	keyAttributes = "attributes"
+	keyID            = "id"
+	keyAttributes    = "attributes"
+	keyCreatedAt     = "created_at"
+	keyCreatorUserID = "creator_user_id"
 )
 
 func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, error) {
@@ -26,6 +28,9 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 		return nil, fmt.Errorf("failed to parse the 'attributes'. 'attributes' must be a JSON string: %w", err)
 	}
 	data[keyAttributes] = attr
+
+	delete(data, keyCreatedAt)
+	delete(data, keyCreatorUserID)
 
 	return data, nil
 }

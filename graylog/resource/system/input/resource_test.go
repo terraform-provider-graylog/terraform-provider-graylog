@@ -49,6 +49,7 @@ func TestAccUser(t *testing.T) {
   "title": "gelf udp",
   "global": true,
   "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput",
+  "node": "",
   "configuration": {
     "recv_buffer_size": 262144,
     "decompress_size_limit": 8388608,
@@ -143,6 +144,7 @@ EOF
   "title": "gelf udp updated",
   "global": true,
   "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput",
+  "node": "",
   "configuration": {
     "recv_buffer_size": 262144,
     "decompress_size_limit": 8388608,
