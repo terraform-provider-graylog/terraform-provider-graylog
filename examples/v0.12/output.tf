@@ -4,7 +4,7 @@ resource "graylog_output" "stdout" {
 
   configuration = <<EOF
 {
-  "prefix": "Writing message (updated): "
+  "prefix": "Writing message: "
 }
 EOF
 }
