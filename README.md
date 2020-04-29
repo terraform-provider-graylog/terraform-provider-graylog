@@ -8,6 +8,10 @@
 
 Terraform Provider for [Graylog](https://docs.graylog.org/)
 
+## Document
+
+https://terraform-provider-graylog.github.io
+
 ## License
 
 [MIT](LICENSE)
