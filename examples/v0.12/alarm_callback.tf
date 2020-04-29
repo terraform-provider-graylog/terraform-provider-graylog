@@ -1,3 +1,5 @@
+# You have to add https://example.com to the URL Whitelist Configuration
+# https://docs.graylog.org/en/3.2/pages/secure/sec_url_whitelist.html
 resource "graylog_alarm_callback" "http" {
   type      = "org.graylog2.alarmcallbacks.HTTPAlarmCallback"
   stream_id = graylog_stream.test.id
