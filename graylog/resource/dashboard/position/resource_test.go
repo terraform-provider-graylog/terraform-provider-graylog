@@ -1,13 +1,16 @@
 package position
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
+	"github.com/stretchr/testify/require"
 	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -49,25 +52,25 @@ func TestAccDashboardWidgetPositions(t *testing.T) {
 		Tester: &flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
-			BodyJSONString: `{
-  "positions": [
-    {
-		  "id": "5ef230f3-cf95-4be5-bd2f-eb3a5a64ac65",
-      "width": 2,
-      "col": 1,
-      "row": 0,
-      "height": 2
-    },
-    {
-      "id": "e19ef574-173b-4159-ab87-4b9b5bb0aa27",
-      "width": 1,
-      "col": 0,
-      "row": 0,
-      "height": 1
-    }
-  ]
-}`,
 			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+				body := map[string]interface{}{}
+				require.Nil(t, json.NewDecoder(req.Body).Decode(&body))
+				require.Nil(t, testutil.EqualMapKeys(body, keyPositions))
+				require.Equal(t, map[string]interface{}{
+					"5ef230f3-cf95-4be5-bd2f-eb3a5a64ac65": map[string]interface{}{
+						"width":  2.0,
+						"col":    1.0,
+						"row":    0.0,
+						"height": 2.0,
+					},
+					"e19ef574-173b-4159-ab87-4b9b5bb0aa27": map[string]interface{}{
+						"width":  1.0,
+						"col":    0.0,
+						"row":    0.0,
+						"height": 1.0,
+					},
+				}, convert.ListToMap(body[keyPositions].([]interface{}), keyID))
+
 				conditionBody = `{
   "creator_user_id": "admin",
   "description": "description",
@@ -157,25 +160,25 @@ EOF
 		Tester: &flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
-			BodyJSONString: `{
-  "positions": [
-    {
-		  "id": "5ef230f3-cf95-4be5-bd2f-eb3a5a64ac65",
-      "width": 2,
-      "col": 2,
-      "row": 0,
-      "height": 2
-    },
-    {
-      "id": "e19ef574-173b-4159-ab87-4b9b5bb0aa27",
-      "width": 1,
-      "col": 1,
-      "row": 1,
-      "height": 1
-    }
-  ]
-}`,
 			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+				body := map[string]interface{}{}
+				require.Nil(t, json.NewDecoder(req.Body).Decode(&body))
+				require.Nil(t, testutil.EqualMapKeys(body, keyPositions))
+				require.Equal(t, map[string]interface{}{
+					"5ef230f3-cf95-4be5-bd2f-eb3a5a64ac65": map[string]interface{}{
+						"width":  2.0,
+						"col":    2.0,
+						"row":    0.0,
+						"height": 2.0,
+					},
+					"e19ef574-173b-4159-ab87-4b9b5bb0aa27": map[string]interface{}{
+						"width":  1.0,
+						"col":    1.0,
+						"row":    1.0,
+						"height": 1.0,
+					},
+				}, convert.ListToMap(body[keyPositions].([]interface{}), keyID))
+
 				conditionBody = `{
   "creator_user_id": "admin",
   "description": "description",
