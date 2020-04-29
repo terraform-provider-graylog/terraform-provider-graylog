@@ -122,3 +122,71 @@ data "graylog_stream" "all_events" {
 		},
 	})
 }
+
+func TestAccStream_byStreamID(t *testing.T) {
+	if err := testutil.SetEnv(); err != nil {
+		t.Fatal(err)
+	}
+
+	getRoute := flute.Route{
+		Name: "get streams",
+		Matcher: &flute.Matcher{
+			Method: "GET",
+		},
+		Tester: &flute.Tester{
+			Path:         "/api/streams/000000000000000000000003",
+			PartOfHeader: testutil.Header(),
+		},
+		Response: &flute.Response{
+			Response: func(req *http.Request) (*http.Response, error) {
+				return &http.Response{
+					StatusCode: 200,
+					Body: ioutil.NopCloser(strings.NewReader(`{
+  "id": "000000000000000000000003",
+  "creator_user_id": "admin",
+  "outputs": [],
+  "matching_type": "AND",
+  "description": "Stream containing all system events created by Graylog",
+  "created_at": "2020-04-28T12:08:32.193Z",
+  "disabled": false,
+  "rules": [],
+  "alert_conditions": [],
+  "alert_receivers": {
+    "emails": [],
+    "users": []
+  },
+  "title": "All system events",
+  "content_pack": null,
+  "remove_matches_from_default_stream": true,
+  "index_set_id": "5ea81cc02ab79c00129dbf1f",
+  "is_default": false
+}
+`)),
+				}, nil
+			},
+		},
+	}
+
+	readStep := resource.TestStep{
+		ResourceName: "data.graylog_stream.all_system_events",
+		PreConfig: func() {
+			testutil.SetHTTPClient(t, getRoute)
+		},
+		Config: `
+data "graylog_stream" "all_system_events" {
+  stream_id = "000000000000000000000003"
+}
+`,
+		Check: resource.ComposeTestCheckFunc(
+			resource.TestCheckResourceAttr("data.graylog_stream.all_system_events", "title", "All system events"),
+			resource.TestCheckResourceAttr("data.graylog_stream.all_system_events", "description", "Stream containing all system events created by Graylog"),
+		),
+	}
+
+	resource.Test(t, resource.TestCase{
+		Providers: testutil.SingleDataSourceProviders("graylog_stream", DataSource()),
+		Steps: []resource.TestStep{
+			readStep,
+		},
+	})
+}
