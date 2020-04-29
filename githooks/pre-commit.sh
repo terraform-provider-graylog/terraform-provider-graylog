@@ -2,5 +2,4 @@
 
 set -eu
 
-cmdx test
 cmdx lint
