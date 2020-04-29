@@ -12,6 +12,9 @@ func Resource() *schema.Resource {
 		Update: update,
 		Delete: destroy,
 
+		SchemaVersion:  schemaVersion,
+		StateUpgraders: stateUpgraders,
+
 		Importer: &schema.ResourceImporter{
 			State: util.GenStateFunc(keyStreamID, keyRuleID),
 		},
