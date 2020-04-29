@@ -55,7 +55,7 @@ var schemaTitles = &schema.Schema{
 	Optional: true,
 	Elem: &schema.Resource{
 		Schema: map[string]*schema.Schema{
-			"widget": &schema.Schema{
+			"widget": {
 				Type:     schema.TypeMap,
 				Required: true,
 				Elem: &schema.Schema{

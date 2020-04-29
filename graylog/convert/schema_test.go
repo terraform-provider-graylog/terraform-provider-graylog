@@ -60,7 +60,7 @@ func TestGetSchema(t *testing.T) {
 				MaxItems: 1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
-						"name": &schema.Schema{
+						"name": {
 							Type: schema.TypeString,
 						},
 					},
