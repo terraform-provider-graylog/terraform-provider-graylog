@@ -1,6 +1,6 @@
 package convert
 
-func ConvertListToMap(data []interface{}, key string) map[string]interface{} {
+func ListToMap(data []interface{}, key string) map[string]interface{} {
 	m := make(map[string]interface{}, len(data))
 	for _, d := range data {
 		elem := d.(map[string]interface{})
@@ -11,7 +11,7 @@ func ConvertListToMap(data []interface{}, key string) map[string]interface{} {
 	return m
 }
 
-func ConvertMapToList(data map[string]interface{}, key string) []interface{} {
+func MapToList(data map[string]interface{}, key string) []interface{} {
 	list := make([]interface{}, len(data))
 	i := 0
 	for k, d := range data {
@@ -23,7 +23,7 @@ func ConvertMapToList(data map[string]interface{}, key string) []interface{} {
 	return list
 }
 
-func ConvertInterfaceListToStringList(data []interface{}) []string {
+func InterfaceListToStringList(data []interface{}) []string {
 	list := make([]string, len(data))
 	for i, a := range data {
 		list[i] = a.(string)

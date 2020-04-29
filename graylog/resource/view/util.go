@@ -24,14 +24,14 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 
 	state := data[keyState].(map[string]interface{})
 
-	if err := convert.ConvertJSONToData(state, keyWidgetMapping, keyPositions); err != nil {
+	if err := convert.JSONToData(state, keyWidgetMapping, keyPositions); err != nil {
 		return nil, err
 	}
 
-	widgets := convert.ConvertListToMap(state[keyWidgets].([]interface{}), keyWidgetID)
+	widgets := convert.ListToMap(state[keyWidgets].([]interface{}), keyWidgetID)
 	for k, a := range widgets {
 		widget := a.(map[string]interface{})
-		if err := convert.ConvertJSONToData(widget, keyConfig, keyTimerange); err != nil {
+		if err := convert.JSONToData(widget, keyConfig, keyTimerange); err != nil {
 			return nil, err
 		}
 		widgets[k] = widget
@@ -44,14 +44,14 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
 	state := data[keyState].(map[string]interface{})
 
-	if err := convert.ConvertDataToJSON(state, keyWidgetMapping, keyPositions); err != nil {
+	if err := convert.DataToJSON(state, keyWidgetMapping, keyPositions); err != nil {
 		return err
 	}
 
-	widgets := convert.ConvertMapToList(state[keyWidgets].(map[string]interface{}), keyWidgetID)
+	widgets := convert.MapToList(state[keyWidgets].(map[string]interface{}), keyWidgetID)
 	for i, a := range widgets {
 		widget := a.(map[string]interface{})
-		if err := convert.ConvertDataToJSON(widget, keyConfig, keyTimerange); err != nil {
+		if err := convert.DataToJSON(widget, keyConfig, keyTimerange); err != nil {
 			return err
 		}
 		widgets[i] = widget

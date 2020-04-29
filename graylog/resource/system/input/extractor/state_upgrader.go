@@ -75,7 +75,7 @@ var stateUpgraderV1 = schema.StateUpgrader{
 		if a, ok := rawState[keyConverters]; ok {
 			list := a.([]interface{})
 			for i, e := range list {
-				if err := convert.ConvertOneSizeListToJSON(e.(map[string]interface{}), keyConfig); err != nil {
+				if err := convert.OneSizeListToJSON(e.(map[string]interface{}), keyConfig); err != nil {
 					return nil, err
 				}
 				list[i] = e

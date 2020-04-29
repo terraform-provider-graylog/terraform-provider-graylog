@@ -19,19 +19,19 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 		return nil, err
 	}
 
-	if err := convert.ConvertJSONToData(data, keyPositions); err != nil {
+	if err := convert.JSONToData(data, keyPositions); err != nil {
 		return nil, err
 	}
 
 	p := data[keyPositions].(map[string]interface{})
 
-	data[keyPositions] = convert.ConvertMapToList(p, keyID)
+	data[keyPositions] = convert.MapToList(p, keyID)
 
 	return data, nil
 }
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
-	if err := convert.ConvertDataToJSON(data, keyPositions); err != nil {
+	if err := convert.DataToJSON(data, keyPositions); err != nil {
 		return err
 	}
 

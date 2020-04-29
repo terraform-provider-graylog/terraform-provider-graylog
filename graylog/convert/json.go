@@ -7,7 +7,7 @@ import (
 	"github.com/suzuki-shunsuke/go-dataeq/dataeq"
 )
 
-func ConvertOneSizeListToJSON(data map[string]interface{}, keys ...string) error {
+func OneSizeListToJSON(data map[string]interface{}, keys ...string) error {
 	for _, key := range keys {
 		v := data[key].([]interface{})[0].(map[string]interface{})
 		b, err := json.Marshal(v)
@@ -19,7 +19,7 @@ func ConvertOneSizeListToJSON(data map[string]interface{}, keys ...string) error
 	return nil
 }
 
-func ConvertDataToJSON(data map[string]interface{}, keys ...string) error {
+func DataToJSON(data map[string]interface{}, keys ...string) error {
 	if len(keys) == 0 {
 		// all keys
 		for key, a := range data {
@@ -41,7 +41,7 @@ func ConvertDataToJSON(data map[string]interface{}, keys ...string) error {
 	return nil
 }
 
-func ConvertJSONToData(data map[string]interface{}, keys ...string) error {
+func JSONToData(data map[string]interface{}, keys ...string) error {
 	if len(keys) == 0 {
 		// all keys
 		for key, v := range data {

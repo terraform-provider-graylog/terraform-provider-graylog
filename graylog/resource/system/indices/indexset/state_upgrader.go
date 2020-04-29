@@ -16,7 +16,7 @@ var stateUpgraderV1 = schema.StateUpgrader{
 	Version: 0,
 	Type:    util.UpgraderType(),
 	Upgrade: func(rawState map[string]interface{}, meta interface{}) (map[string]interface{}, error) {
-		if err := convert.ConvertOneSizeListToJSON(rawState, keyRetentionStrategy, keyRotationStrategy); err != nil {
+		if err := convert.OneSizeListToJSON(rawState, keyRetentionStrategy, keyRotationStrategy); err != nil {
 			return nil, err
 		}
 		return rawState, nil

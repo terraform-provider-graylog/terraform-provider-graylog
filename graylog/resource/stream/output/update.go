@@ -32,7 +32,7 @@ func update(d *schema.ResourceData, m interface{}) error {
 
 	newList := newVSet.Difference(oldVSet).List()
 	if len(newList) != 0 {
-		if _, err := cl.StreamOutput.AssociateOutputsWithStream(ctx, streamID, convert.ConvertInterfaceListToStringList(newList)); err != nil {
+		if _, err := cl.StreamOutput.AssociateOutputsWithStream(ctx, streamID, convert.InterfaceListToStringList(newList)); err != nil {
 			return fmt.Errorf("failed to associate outputs to stream %s: %w", streamID, err)
 		}
 	}

@@ -9,7 +9,7 @@ import (
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
 	id, ok := util.RenameKey(data, "id", "index_set_id")
-	if err := convert.ConvertDataToJSON(data, "rotation_strategy", "retention_strategy"); err != nil {
+	if err := convert.DataToJSON(data, "rotation_strategy", "retention_strategy"); err != nil {
 		return err
 	}
 

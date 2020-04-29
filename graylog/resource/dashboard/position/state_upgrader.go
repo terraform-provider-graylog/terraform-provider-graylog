@@ -20,7 +20,7 @@ var stateUpgraderV1 = schema.StateUpgrader{
 	Type:    util.UpgraderType(),
 	Upgrade: func(rawState map[string]interface{}, meta interface{}) (map[string]interface{}, error) {
 		if a, ok := rawState[keyPositions]; ok {
-			b, err := json.Marshal(convert.ConvertListToMap(a.([]interface{}), keyWidgetID))
+			b, err := json.Marshal(convert.ListToMap(a.([]interface{}), keyWidgetID))
 			if err != nil {
 				return nil, fmt.Errorf("failed to marshal 'positions' as JSON: %w", err)
 			}

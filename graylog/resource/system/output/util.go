@@ -15,7 +15,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	if err != nil {
 		return nil, err
 	}
-	if err := convert.ConvertJSONToData(data, keyConfiguration); err != nil {
+	if err := convert.JSONToData(data, keyConfiguration); err != nil {
 		return nil, err
 	}
 
@@ -23,7 +23,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 }
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
-	if err := convert.ConvertDataToJSON(data, keyConfiguration); err != nil {
+	if err := convert.DataToJSON(data, keyConfiguration); err != nil {
 		return err
 	}
 

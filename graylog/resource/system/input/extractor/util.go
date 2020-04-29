@@ -28,16 +28,16 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 	util.SetDefaultValue(data, "target_field", "")
 	util.SetDefaultValue(data, "condition_value", "")
 
-	if err := convert.ConvertJSONToData(data, keyExtractorConfig); err != nil {
+	if err := convert.JSONToData(data, keyExtractorConfig); err != nil {
 		return nil, err
 	}
 	util.RenameKey(data, keyExtractorID, keyID)
 
-	converters := convert.ConvertListToMap(data[keyConverters].([]interface{}), keyType)
+	converters := convert.ListToMap(data[keyConverters].([]interface{}), keyType)
 	for k, v := range converters {
 		converters[k] = v.(map[string]interface{})[keyConfig]
 	}
-	if err := convert.ConvertJSONToData(converters); err != nil {
+	if err := convert.JSONToData(converters); err != nil {
 		return nil, err
 	}
 	data[keyConverters] = converters
@@ -46,7 +46,7 @@ func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, er
 }
 
 func setDataToResourceData(d *schema.ResourceData, data map[string]interface{}) error {
-	if err := convert.ConvertDataToJSON(data, keyExtractorConfig); err != nil {
+	if err := convert.DataToJSON(data, keyExtractorConfig); err != nil {
 		return err
 	}
 	util.RenameKey(data, keyID, keyExtractorID)
