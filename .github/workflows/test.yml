@@ -20,6 +20,8 @@ jobs:
         golangci-lint run
 
     - run: go build -o examples/v0.12/.terraform/plugins/linux_amd64/terraform-provider-graylog ./cmd/terraform-provider-graylog
+      env:
+        CGO_ENABLED: "0"
     - name: 'Terraform Format'
       uses: hashicorp/terraform-github-actions@master
       with:
