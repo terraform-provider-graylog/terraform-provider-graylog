@@ -1,0 +1,47 @@
+---
+tasks:
+- name: init
+  short: i
+  script: bash scripts/githook.sh
+  description: setup git hooks
+  usage: setup git hooks
+- name: coverage
+  short: c
+  description: test a package (fzf is required)
+  usage: test a package (fzf is required)
+  script: "{{if .acc}}TF_ACC=1{{end}} bash scripts/coverage.sh {{.path}}"
+  flags:
+  - name: acc
+    type: bool
+    short: a
+  args:
+  - name: path
+- name: test
+  short: t
+  description: test
+  usage: test
+  script: bash scripts/test.sh
+- name: fmt
+  description: format the go code
+  usage: format the go code
+  script: bash scripts/fmt.sh
+- name: vet
+  short: v
+  description: go vet
+  usage: go vet
+  script: go vet ./...
+- name: lint
+  short: l
+  description: lint the go code
+  usage: lint the go code
+  script: golangci-lint run
+- name: release
+  short: r
+  description: release the new version
+  usage: release the new version
+  script: "bash scripts/release.sh {{.version}}"
+  args:
+  - name: version
+    required: true
+- name: install-local-terraform
+  script: bash scripts/install_local_terraform.sh

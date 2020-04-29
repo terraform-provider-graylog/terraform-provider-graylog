@@ -1,0 +1,86 @@
+---
+kind: pipeline
+name: build
+volumes:
+- name: gopath
+  temp: {}
+steps:
+- name: download go modules
+  image: &image_go golang:1.14.2
+  commands:
+  - go mod download
+  volumes: &volumes
+  - name: gopath
+    path: /go
+
+- name: build to run terraform validate
+  image: *image_go
+  commands:
+  - go build -o dist/terraform-provider-graylog ./cmd/terraform-provider-graylog
+- name: terraform fmt and validate (v0.12)
+  image: hashicorp/terraform:0.12.24
+  commands:
+  - terraform fmt -check examples/v0.12
+  - cd examples/v0.12
+  - terraform init -plugin-dir ../../dist
+  - terraform validate
+  - rm -Rf ../../dist
+
+- name: golangci-lint
+  image: golangci/golangci-lint:v1.24.0-alpine
+  commands:
+  - golangci-lint run
+  volumes: *volumes
+- name: codecov
+  image: *image_go
+  commands:
+  # bash and cgo seem to be required
+  - bash scripts/codecov_test.sh
+  - curl -s https://codecov.io/bash > /tmp/codecov.sh
+  - test "$LOCAL" = "true" -o "$DRONE_BUILD_EVENT" = "pull_request" || bash /tmp/codecov.sh
+  volumes: *volumes
+  environment:
+    CODECOV_TOKEN:
+      from_secret: codecov_token
+- name: remove changes
+  image: &image_git plugins/git
+  commands:
+  # Sometimes it is failed to release by goreleaser due to changes of go.sum
+  - git checkout -- .
+
+- name: fetch tags to release
+  image: *image_git
+  commands:
+  - git fetch --tags
+  when:
+    event:
+    - tag
+- name: release
+  image: &goreleaser goreleaser/goreleaser:v0.131.0
+  commands:
+  - goreleaser release
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
+  volumes: *volumes
+  when:
+    event:
+    - tag
+
+- name: create a dummy tag to test releasing
+  image: *image_git
+  commands:
+  - git tag v0.1.0-alpha
+  when:
+    event:
+    - pull_request
+    - push
+- name: release (skip-publish)
+  image: *goreleaser
+  commands:
+  - goreleaser release --skip-publish
+  volumes: *volumes
+  when:
+    event:
+    - pull_request
+    - push
