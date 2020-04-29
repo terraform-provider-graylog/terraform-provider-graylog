@@ -18,13 +18,8 @@ jobs:
       run: |
         curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.25.1
         golangci-lint run
-    - name: test
-      run: |
-        bash scripts/codecov_test.sh
-        curl -s https://codecov.io/bash > /tmp/codecov.sh
-        bash /tmp/codecov.sh
 
-    - run: go build -o dist/terraform-provider-graylog ./cmd/terraform-provider-graylog
+    - run: go build -o examples/v0.12/.terraform/plugins/linux_amd64/terraform-provider-graylog ./cmd/terraform-provider-graylog
     - name: 'Terraform Format'
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -39,8 +34,6 @@ jobs:
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: ${{ env.tf_working_dir }}
         tf_actions_comment: false
-      env:
-        TF_CLI_ARGS: "-plugin-dir=../../dist"
     - name: 'Terraform Validate'
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -48,6 +41,12 @@ jobs:
         tf_actions_subcommand: 'validate'
         tf_actions_working_dir: ${{ env.tf_working_dir }}
         tf_actions_comment: false
+        
+    - name: test
+      run: |
+        bash scripts/codecov_test.sh
+        curl -s https://codecov.io/bash > /tmp/codecov.sh
+        bash /tmp/codecov.sh
 
     - name: remove changes
       # Sometimes it is failed to release by goreleaser due to changes of go.sum
