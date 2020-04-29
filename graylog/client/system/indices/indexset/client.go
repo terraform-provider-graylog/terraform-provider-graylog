@@ -60,6 +60,10 @@ func (cl *Client) Gets(
 	return body, resp, err
 }
 
+func genCreationDate() string {
+	return time.Now().In(time.FixedZone("UTC", 0)).Format(time.RFC3339Nano)
+}
+
 func (cl *Client) Create(
 	ctx context.Context, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
@@ -68,8 +72,8 @@ func (cl *Client) Create(
 	}
 
 	body := map[string]interface{}{}
-	if _, ok := data["creation_date"]; !ok {
-		data["creation_date"] = time.Now().In(time.FixedZone("UTC", 0)).Format(time.RFC3339Nano)
+	if v, ok := data["creation_date"]; !ok || v == "" || v == nil {
+		data["creation_date"] = genCreationDate()
 	}
 	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
 		Method:       "POST",
