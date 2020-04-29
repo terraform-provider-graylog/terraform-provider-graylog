@@ -12,10 +12,8 @@ func Resource() *schema.Resource {
 		Update: update,
 		Delete: destroy,
 
-		SchemaVersion: 1,
-		StateUpgraders: []schema.StateUpgrader{
-			stateUpgraderV1,
-		},
+		SchemaVersion:  schemaVersion,
+		StateUpgraders: stateUpgraders,
 
 		Importer: &schema.ResourceImporter{
 			State: schema.ImportStatePassthrough,

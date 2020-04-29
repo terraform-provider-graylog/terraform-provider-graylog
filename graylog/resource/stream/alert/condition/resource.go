@@ -12,10 +12,8 @@ func Resource() *schema.Resource {
 		Update: update,
 		Delete: destroy,
 
-		SchemaVersion: 2,
-		StateUpgraders: []schema.StateUpgrader{
-			stateUpgraderV2,
-		},
+		SchemaVersion:  schemaVersion,
+		StateUpgraders: stateUpgraders,
 
 		Importer: &schema.ResourceImporter{
 			State: util.GenStateFunc("stream_id", "alert_condition_id"),

@@ -8,6 +8,12 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
+const schemaVersion = 2
+
+var stateUpgraders = []schema.StateUpgrader{
+	stateUpgraderV2,
+}
+
 var stateUpgraderV2 = schema.StateUpgrader{
 	Version: 1,
 	Type:    util.UpgraderType(),
