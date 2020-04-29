@@ -3,3 +3,5 @@
 .terraform
 *.log
 .coverage
+coverage.txt
+profile.txt
