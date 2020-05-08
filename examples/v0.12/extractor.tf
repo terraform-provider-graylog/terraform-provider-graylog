@@ -9,11 +9,9 @@ resource "graylog_extractor" "test_grok" {
   condition_value = ""
   order           = 0
 
-  extractor_config = <<EOF
-{
-  "grok_pattern": "%%%{DATA}"
-}
-EOF
+  extractor_config = jsonencode({
+    grok_pattern = "%%%{DATA}"
+  })
 }
 
 resource "graylog_extractor" "test_json" {
@@ -27,16 +25,14 @@ resource "graylog_extractor" "test_json" {
   condition_value = ""
   order           = 0
 
-  extractor_config = <<EOF
-{
-  "list_separator": ", ",
-  "kv_separator": "=",
-  "key_prefix": "visit_",
-  "key_separator": "_",
-  "replace_key_whitespace": false,
-  "key_whitespace_replacement": "_"
-}
-EOF
+  extractor_config = jsonencode({
+    list_separator             = ", "
+    kv_separator               = "="
+    key_prefix                 = "visit_"
+    key_separator              = "_"
+    replace_key_whitespace     = false
+    key_whitespace_replacement = "_"
+  })
 }
 
 resource "graylog_extractor" "test_regex" {
@@ -49,21 +45,18 @@ resource "graylog_extractor" "test_regex" {
   condition_type = "none"
   order          = 0
 
-  extractor_config = <<EOF
-{
-	"regex_value": ".*"
-}
-EOF
+  extractor_config = jsonencode({
+    regex_value = ".*"
+  })
 
   converters {
-    type   = "date"
-    config = <<EOF
-{
-  "date_format": "yyyy/MM/ddTHH:mm:ss",
-  "time_zone": "Japan",
-  "locale": "en"
-}
-EOF
+    type = "date"
+
+    config = jsonencode({
+      date_format = "yyyy/MM/ddTHH:mm:ss"
+      time_zone   = "Japan"
+      locale      = "en"
+    })
   }
 }
 
@@ -78,12 +71,10 @@ resource "graylog_extractor" "test_split_and_index" {
   condition_value = ""
   order           = 0
 
-  extractor_config = <<EOF
-{
-  "index": 1,
-  "split_by": "."
-}
-EOF
+  extractor_config = jsonencode({
+    split_by = "."
+    index    = 1
+  })
 }
 
 resource "graylog_extractor" "http_response_code" {
@@ -102,9 +93,7 @@ resource "graylog_extractor" "http_response_code" {
     config = "{}"
   }
 
-  extractor_config = <<EOF
-{
-  "regex_value": "HTTP/1.[0-1]\" (\\d{3}) "
-}
-EOF
+  extractor_config = jsonencode({
+    regex_value = "HTTP/1.[0-1]\" (\\d{3}) "
+  })
 }

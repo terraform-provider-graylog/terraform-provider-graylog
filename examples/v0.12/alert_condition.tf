@@ -4,14 +4,12 @@ resource "graylog_alert_condition" "test" {
   in_grace  = false
   title     = "test"
 
-  parameters = <<EOF
-{
-  "backlog": 2,
-  "repeat_notifications": false,
-  "field": "message",
-  "query": "*",
-  "grace": 0,
-  "value": "hoge hoge"
-}
-EOF
+  parameters = jsonencode({
+    field                = "message"
+    value                = "hoge hoge"
+    backlog              = 2
+    repeat_notifications = false
+    query                = "*"
+    grace                = 0
+  })
 }

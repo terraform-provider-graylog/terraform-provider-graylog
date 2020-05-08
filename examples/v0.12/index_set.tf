@@ -17,17 +17,13 @@ resource "graylog_index_set" "test" {
   index_optimization_max_num_segments = 1
   field_type_refresh_interval         = 5000
 
-  retention_strategy = <<EOF
-{
-  "max_number_of_indices": 30,
-  "type": "org.graylog2.indexer.retention.strategies.DeletionRetentionStrategyConfig"
-}
-EOF
+  retention_strategy = jsonencode({
+    max_number_of_indices = 30
+    type                  = "org.graylog2.indexer.retention.strategies.DeletionRetentionStrategyConfig"
+  })
 
-  rotation_strategy = <<EOF
-{
-  "max_docs_per_index": 30000000,
-  "type": "org.graylog2.indexer.rotation.strategies.MessageCountRotationStrategyConfig"
-}
-EOF
+  rotation_strategy = jsonencode({
+    max_docs_per_index = 30000000
+    type               = "org.graylog2.indexer.rotation.strategies.MessageCountRotationStrategyConfig"
+  })
 }
