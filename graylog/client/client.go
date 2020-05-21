@@ -11,6 +11,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/event/notification"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/role"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/sidecar/collector"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/sidecar/configuration"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream/alarmcallback"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream/alert/condition"
@@ -52,6 +53,7 @@ type Client struct {
 	PipelineConnection      *connection.Client
 	PipelineRule            *rule.Client
 	Role                    *role.Client
+	SidecarConfiguration    *configuration.Client
 	Stream                  *stream.Client
 	StreamOutput            *streamOutput.Client
 	StreamRule              *streamRule.Client
@@ -131,6 +133,9 @@ func New(m interface{}) (*Client, error) {
 			Client: httpClient,
 		},
 		Role: &role.Client{
+			Client: httpClient,
+		},
+		SidecarConfiguration: &configuration.Client{
 			Client: httpClient,
 		},
 		Stream: &stream.Client{
