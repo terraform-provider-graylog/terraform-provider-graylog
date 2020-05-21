@@ -73,6 +73,7 @@ func TestGetSchema(t *testing.T) {
 	}
 
 	for _, d := range data {
+		d := d
 		t.Run(d.title, func(t *testing.T) {
 			a, err := GetSchema(d.data, d.sc)
 			if d.isErr {
@@ -128,6 +129,7 @@ func TestSetSchema(t *testing.T) {
 	}
 
 	for _, d := range data {
+		d := d
 		t.Run(d.title, func(t *testing.T) {
 			a, err := SetSchema(d.data, d.sc)
 			if d.isErr {

@@ -67,6 +67,7 @@ func TestEqualMapKeys(t *testing.T) {
 		},
 	}
 	for _, d := range data {
+		d := d
 		t.Run(d.title, func(t *testing.T) {
 			err := EqualMapKeys(d.data, d.keys...)
 			if d.isErr {

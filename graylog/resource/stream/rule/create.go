@@ -29,7 +29,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return fmt.Errorf("failed to create a stream rule (stream id: %s): %w", streamID, err)
 	}
 	ruleID := rule[keyStreamRuleID].(string)
-	d.Set(keyRuleID, ruleID)
+	if err := d.Set(keyRuleID, ruleID); err != nil {
+		return err
+	}
 	d.SetId(streamID + "/" + ruleID)
 	return nil
 }

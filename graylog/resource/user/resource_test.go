@@ -149,8 +149,11 @@ resource "graylog_user" "test" {
 				if err := json.NewDecoder(req.Body).Decode(&body); err != nil {
 					t.Fatal(err)
 				}
-				if err := testutil.EqualMapKeys(body, "email", "password", "full_name", "roles", "permissions", "session_timeout_ms", "username", "timezone"); err != nil {
-
+				keys := []string{
+					"email", "password", "full_name", "roles", "permissions",
+					"session_timeout_ms", "username", "timezone",
+				}
+				if err := testutil.EqualMapKeys(body, keys...); err != nil {
 					t.Fatal(err)
 				}
 				require.Equal(t, "test@example.com", body["email"])

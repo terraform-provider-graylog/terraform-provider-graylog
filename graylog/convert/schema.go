@@ -32,7 +32,7 @@ func SetSchema(data interface{}, sc *schema.Schema) (interface{}, error) {
 func SetTypeList(data interface{}, sc *schema.Schema) (interface{}, error) {
 	switch t := sc.Elem.(type) {
 	case *schema.Resource:
-		switch v := data.(type) {
+		switch v := data.(type) { //nolint:gocritic
 		case []interface{}:
 			ret := make([]interface{}, len(v))
 			for i, a := range v {

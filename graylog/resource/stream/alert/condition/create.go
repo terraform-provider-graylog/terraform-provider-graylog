@@ -29,7 +29,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return fmt.Errorf("failed to create a alert condition (stream id: %s): %w", streamID, err)
 	}
 	acID := ac[keyAlertConditionID].(string)
-	d.Set(keyAlertConditionID, acID)
+	if err := d.Set(keyAlertConditionID, acID); err != nil {
+		return err
+	}
 	d.SetId(streamID + "/" + acID)
 	return nil
 }

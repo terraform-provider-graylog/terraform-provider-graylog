@@ -35,6 +35,7 @@ func TestRenameKey(t *testing.T) {
 		},
 	}
 	for _, d := range data {
+		d := d
 		t.Run(d.title, func(t *testing.T) {
 			value, f := RenameKey(d.data, d.oldKey, d.newKey)
 			if d.expF {

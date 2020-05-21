@@ -15,7 +15,7 @@ func destroy(d *schema.ResourceData, m interface{}) error {
 		return err
 	}
 
-	data, _, err := getDataFromResourceData(d)
+	data, err := getDataFromResourceData(d)
 	if err != nil {
 		return err
 	}

@@ -14,7 +14,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
-	data, _, err := getDataFromResourceData(d)
+	data, err := getDataFromResourceData(d)
 	if err != nil {
 		return err
 	}
