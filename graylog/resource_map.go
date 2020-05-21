@@ -30,7 +30,6 @@ import (
 var resourceMap = map[string]*schema.Resource{
 	"graylog_alarm_callback":             alarmcallback.Resource(),
 	"graylog_alert_condition":            condition.Resource(),
-	"graylog_collector":                  collector.Resource(),
 	"graylog_dashboard":                  dashboard.Resource(),
 	"graylog_dashboard_widget":           widget.Resource(),
 	"graylog_dashboard_widget_positions": position.Resource(),
@@ -47,6 +46,7 @@ var resourceMap = map[string]*schema.Resource{
 	"graylog_pipeline_connection":        connection.Resource(),
 	"graylog_pipeline_rule":              rule.Resource(),
 	"graylog_role":                       role.Resource(),
+	"graylog_sidecar_collector":          collector.Resource(),
 	"graylog_stream":                     stream.Resource(),
 	"graylog_stream_output":              streamOutput.Resource(),
 	"graylog_stream_rule":                streamRule.Resource(),

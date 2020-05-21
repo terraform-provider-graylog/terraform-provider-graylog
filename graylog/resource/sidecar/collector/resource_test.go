@@ -18,7 +18,7 @@ func TestAccCollector(t *testing.T) {
 
 	collectorBody := ""
 	resourcePath := "/api/sidecar/collectors/5ec65adb2ab79c001226759c"
-	resourceName := "graylog_collector.test"
+	resourceName := "graylog_sidecar_collector.test"
 
 	getRoute := flute.Route{
 		Name: "get a collector",
@@ -92,7 +92,7 @@ func TestAccCollector(t *testing.T) {
 			testutil.SetHTTPClient(t, getRoute, postRoute)
 		},
 		Config: `
-resource "graylog_collector" "test" {
+resource "graylog_sidecar_collector" "test" {
   name                  = "foo"
   service_type          = "exec"
   node_operating_system = "linux"
@@ -174,7 +174,7 @@ resource "graylog_collector" "test" {
 			testutil.SetHTTPClient(t, getRoute, updateRoute, deleteRoute)
 		},
 		Config: `
-resource "graylog_collector" "test" {
+resource "graylog_sidecar_collector" "test" {
   name                  = "foo_updated"
   service_type          = "exec"
   node_operating_system = "linux"
@@ -188,7 +188,7 @@ resource "graylog_collector" "test" {
 	}
 
 	resource.Test(t, resource.TestCase{
-		Providers: testutil.SingleResourceProviders("graylog_collector", Resource()),
+		Providers: testutil.SingleResourceProviders("graylog_sidecar_collector", Resource()),
 		Steps: []resource.TestStep{
 			createStep,
 			updateStep,
