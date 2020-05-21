@@ -9,6 +9,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/event/notification"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/role"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/sidecar/collector"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/sidecar/configuration"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/stream"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/stream/alarmcallback"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/resource/stream/alert/condition"
@@ -47,6 +48,7 @@ var resourceMap = map[string]*schema.Resource{
 	"graylog_pipeline_rule":              rule.Resource(),
 	"graylog_role":                       role.Resource(),
 	"graylog_sidecar_collector":          collector.Resource(),
+	"graylog_sidecar_configuration":      configuration.Resource(),
 	"graylog_stream":                     stream.Resource(),
 	"graylog_stream_output":              streamOutput.Resource(),
 	"graylog_stream_rule":                streamRule.Resource(),
