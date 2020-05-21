@@ -10,6 +10,7 @@ import (
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/event/definition"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/event/notification"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/role"
+	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/sidecar/collector"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream/alarmcallback"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/client/stream/alert/condition"
@@ -34,6 +35,7 @@ type Client struct {
 	APIVersion              string
 	AlarmCallback           *alarmcallback.Client
 	AlertCondition          *condition.Client
+	Collector               *collector.Client
 	Dashboard               *dashboard.Client
 	DashboardWidget         *widget.Client
 	DashboardWidgetPosition *position.Client
@@ -78,6 +80,9 @@ func New(m interface{}) (*Client, error) {
 			Client: httpClient,
 		},
 		AlertCondition: &condition.Client{
+			Client: httpClient,
+		},
+		Collector: &collector.Client{
 			Client: httpClient,
 		},
 		Dashboard: &dashboard.Client{
