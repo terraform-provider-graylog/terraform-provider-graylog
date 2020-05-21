@@ -28,7 +28,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return fmt.Errorf("failed to create a alarm callback (stream id: %s): %w", streamID, err)
 	}
 	acID := ac[keyAlarmCallbackID].(string)
-	d.Set(keyAlarmCallbackID, acID)
+	if err := d.Set(keyAlarmCallbackID, acID); err != nil {
+		return err
+	}
 	d.SetId(streamID + "/" + acID)
 	return nil
 }

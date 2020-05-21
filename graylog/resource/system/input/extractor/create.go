@@ -29,7 +29,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return fmt.Errorf("failed to create a extractor (input id: %s): %w", inputID, err)
 	}
 	acID := ac[keyExtractorID].(string)
-	d.Set(keyExtractorID, acID)
+	if err := d.Set(keyExtractorID, acID); err != nil {
+		return err
+	}
 	d.SetId(inputID + "/" + acID)
 	return nil
 }

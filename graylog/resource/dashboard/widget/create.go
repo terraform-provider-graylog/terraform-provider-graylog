@@ -14,7 +14,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
-	data, _, err := getDataFromResourceData(d)
+	data, err := getDataFromResourceData(d)
 	if err != nil {
 		return err
 	}
@@ -30,7 +30,9 @@ func create(d *schema.ResourceData, m interface{}) error {
 		return fmt.Errorf("failed to create a dashboard widget(dashboard id: %s): %w", dsID, err)
 	}
 	widgetID := dw[keyWidgetID].(string)
-	d.Set(keyWidgetID, widgetID)
+	if err := d.Set(keyWidgetID, widgetID); err != nil {
+		return err
+	}
 	d.SetId(dsID + "/" + widgetID)
 	return nil
 }

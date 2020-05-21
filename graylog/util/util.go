@@ -17,7 +17,7 @@ func HandleGetResourceError(
 	if resp == nil {
 		return err
 	}
-	if resp.StatusCode == 404 {
+	if resp.StatusCode == http.StatusNotFound {
 		d.SetId("")
 		return nil
 	}

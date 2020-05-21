@@ -35,6 +35,7 @@ func TestGetResource(t *testing.T) {
 	}
 
 	for _, d := range data {
+		d := d
 		t.Run(d.title, func(t *testing.T) {
 			a, err := GetResource(d.data, d.rsc)
 			if d.isErr {
