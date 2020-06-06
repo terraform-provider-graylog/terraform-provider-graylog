@@ -14,8 +14,21 @@ func destroy(d *schema.ResourceData, m interface{}) error {
 	if err != nil {
 		return err
 	}
+	data, _, err := cl.Sidecar.GetAll(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to get all sidecars to destroy: %w", err)
+	}
+	sidecars := data[keySidecars].([]interface{})
+	for i, sidecar := range sidecars {
+		nodeID := sidecar.(map[string]interface{})[keyNodeID].(string)
+		sidecars[i] = map[string]interface{}{
+			keyNodeID:      nodeID,
+			keyAssignments: []interface{}{},
+		}
+	}
+
 	if _, err := cl.SidecarConfiguration.Assign(ctx, map[string]interface{}{
-		"nodes": []interface{}{},
+		"nodes": sidecars,
 	}); err != nil {
 		return fmt.Errorf("failed to delete congiuration assignments to sidecars: %w", err)
 	}

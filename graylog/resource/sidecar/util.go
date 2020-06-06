@@ -7,9 +7,11 @@ import (
 )
 
 const (
-	keyNodes    = "nodes"
-	keySidecars = "sidecars"
-	systemID    = "system"
+	keyNodes       = "nodes"
+	keySidecars    = "sidecars"
+	keyNodeID      = "node_id"
+	keyAssignments = "assignments"
+	systemID       = "system"
 )
 
 func getDataFromResourceData(d *schema.ResourceData) (map[string]interface{}, error) {

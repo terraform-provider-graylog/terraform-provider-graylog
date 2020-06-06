@@ -1,7 +1,6 @@
 package sidecar
 
 import (
-	"github.com/hashicorp/terraform/helper/hashcode"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -20,9 +19,6 @@ func Resource() *schema.Resource {
 			"sidecars": {
 				Type:     schema.TypeSet,
 				Required: true,
-				Set: func(data interface{}) int {
-					return hashcode.String(data.(map[string]interface{})["node_id"].(string))
-				},
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"node_id": {
