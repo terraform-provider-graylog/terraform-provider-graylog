@@ -76,3 +76,18 @@ func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error)
 	})
 	return resp, err
 }
+
+func (cl *Client) Assign(
+	ctx context.Context, nodes interface{},
+) (*http.Response, error) {
+	if nodes == nil {
+		return nil, errors.New("request body is nil")
+	}
+
+	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+		Method:      "PUT",
+		Path:        "/sidecars/configurations",
+		RequestBody: nodes,
+	})
+	return resp, err
+}
