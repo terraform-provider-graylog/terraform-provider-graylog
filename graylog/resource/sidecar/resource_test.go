@@ -228,11 +228,6 @@ func TestAccSidecar(t *testing.T) {
 					sidecarBody = createdBody
 				case 1:
 					require.Equal(t, map[string]interface{}{
-						"nodes": []interface{}{},
-					}, body)
-					sidecarBody = deletedBody
-				case 2:
-					require.Equal(t, map[string]interface{}{
 						"nodes": []interface{}{
 							map[string]interface{}{
 								"node_id": "10517347-8fad-4f25-835f-95d1943fa338",
@@ -246,6 +241,16 @@ func TestAccSidecar(t *testing.T) {
 						},
 					}, body)
 					sidecarBody = updatedBody
+				case 2:
+					require.Equal(t, map[string]interface{}{
+						"nodes": []interface{}{
+							map[string]interface{}{
+								"node_id":     "10517347-8fad-4f25-835f-95d1943fa338",
+								"assignments": []interface{}{},
+							},
+						},
+					}, body)
+					sidecarBody = deletedBody
 				}
 				cnt++
 			},
