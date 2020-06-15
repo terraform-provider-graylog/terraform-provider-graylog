@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -47,14 +47,14 @@ func TestAccInputStaticFields(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a input staticfield",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         getURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				b := &bytes.Buffer{}
 				if err := json.NewEncoder(b).Encode(inputBody); err != nil {
@@ -70,13 +70,13 @@ func TestAccInputStaticFields(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a input staticfield",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				v := struct {
 					Key   string `json:"key"`
 					Value string `json:"value"`
@@ -89,7 +89,7 @@ func TestAccInputStaticFields(t *testing.T) {
 				inputBody[KeyStaticFields] = fields
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -98,12 +98,12 @@ func TestAccInputStaticFields(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a input staticfield",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				a := strings.LastIndex(req.URL.Path, "/")
 				key := req.URL.Path[a+1:]
 				fields := inputBody[KeyStaticFields].(map[string]interface{})
@@ -111,7 +111,7 @@ func TestAccInputStaticFields(t *testing.T) {
 				inputBody[KeyStaticFields] = fields
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

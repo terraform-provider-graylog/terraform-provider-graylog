@@ -9,7 +9,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/stretchr/testify/require"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/convert"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
@@ -27,14 +27,14 @@ func TestAccDashboardWidgetPositions(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a dashboard widget position",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         dashboardURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -46,13 +46,13 @@ func TestAccDashboardWidgetPositions(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a dashboard widget position",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				body := map[string]interface{}{}
 				require.Nil(t, json.NewDecoder(req.Body).Decode(&body))
 				require.Nil(t, testutil.EqualMapKeys(body, keyPositions))
@@ -113,7 +113,7 @@ func TestAccDashboardWidgetPositions(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -154,13 +154,13 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a dashboard widget",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				body := map[string]interface{}{}
 				require.Nil(t, json.NewDecoder(req.Body).Decode(&body))
 				require.Nil(t, testutil.EqualMapKeys(body, keyPositions))
@@ -221,7 +221,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

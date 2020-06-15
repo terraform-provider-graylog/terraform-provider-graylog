@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -20,14 +20,14 @@ func TestAccRole(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a role",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/roles/terraform",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -39,10 +39,10 @@ func TestAccRole(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a role",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/roles",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -50,7 +50,7 @@ func TestAccRole(t *testing.T) {
   "description": "role description",
   "permissions": ["dashboards:*"]
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				roleBody = `{
   "name": "terraform",
   "description": "role description",
@@ -61,7 +61,7 @@ func TestAccRole(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -99,10 +99,10 @@ resource "graylog_role" "terraform" {
 
 	updateRoute := flute.Route{
 		Name: "update a role",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/roles/terraform",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -110,7 +110,7 @@ resource "graylog_role" "terraform" {
   "description": "role description updated",
   "permissions": ["dashboards:*"]
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				roleBody = `{
   "name": "terraform",
   "description": "role description updated",
@@ -121,7 +121,7 @@ resource "graylog_role" "terraform" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -138,14 +138,14 @@ resource "graylog_role" "terraform" {
 
 	deleteRoute := flute.Route{
 		Name: "delete a role",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/roles/terraform",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

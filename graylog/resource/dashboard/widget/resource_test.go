@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -23,14 +23,14 @@ func TestAccDashboardWidget(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a dashboard widget",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -42,10 +42,10 @@ func TestAccDashboardWidget(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a dashboard widget",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/dashboards/5ea24b8c2ab79c001251ee46/widgets",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -63,7 +63,7 @@ func TestAccDashboardWidget(t *testing.T) {
     "query": ""
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				dashboardBody = `{
   "id": "51e7238a-f73d-4a5c-a4cb-9a91b5560c1d",
   "description": "Stream search result count",
@@ -83,7 +83,7 @@ func TestAccDashboardWidget(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -125,10 +125,10 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a dashboard widget",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -146,7 +146,7 @@ EOF
     "query": ""
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				dashboardBody = `{
   "id": "51e7238a-f73d-4a5c-a4cb-9a91b5560c1d",
   "description": "Stream search result count updated",
@@ -166,7 +166,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -175,14 +175,14 @@ EOF
 
 	deleteRoute := flute.Route{
 		Name: "delete a dashboard widget",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

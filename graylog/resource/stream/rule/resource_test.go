@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -24,14 +24,14 @@ func TestAccStreamRule(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a stream rule",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -43,10 +43,10 @@ func TestAccStreamRule(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a stream rule",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -56,7 +56,7 @@ func TestAccStreamRule(t *testing.T) {
   "description": "test",
   "inverted": false
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				ruleBody = `{
   "field": "tag",
   "stream_id": "5ea26bb42ab79c0012521287",
@@ -68,7 +68,7 @@ func TestAccStreamRule(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -80,14 +80,14 @@ func TestAccStreamRule(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a stream rule",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -116,10 +116,10 @@ resource "graylog_stream_rule" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a stream rule",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -129,7 +129,7 @@ resource "graylog_stream_rule" "test" {
   "description": "test updated",
   "inverted": false
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				ruleBody = `{
   "field": "tag",
   "stream_id": "5ea26bb42ab79c0012521287",
@@ -141,7 +141,7 @@ resource "graylog_stream_rule" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},

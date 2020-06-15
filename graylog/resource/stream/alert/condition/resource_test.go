@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -23,14 +23,14 @@ func TestAccAlertCondition(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a alert condition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -42,10 +42,10 @@ func TestAccAlertCondition(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a alert condition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/streams/5ea26bb42ab79c0012521287/alerts/conditions",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -60,7 +60,7 @@ func TestAccAlertCondition(t *testing.T) {
     "value": "hoge hoge"
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				conditionBody = `{
   "id": "a9a29806-e788-4e18-863b-64270a085500",
   "type": "field_content_value",
@@ -79,7 +79,7 @@ func TestAccAlertCondition(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -91,14 +91,14 @@ func TestAccAlertCondition(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a alert condition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -136,14 +136,14 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a alert condition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:           resourceURLPath,
 			PartOfHeader:   testutil.Header(),
 			BodyJSONString: ``,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				conditionBody = `{
   "id": "a9a29806-e788-4e18-863b-64270a085500",
   "type": "field_content_value",
@@ -162,7 +162,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
