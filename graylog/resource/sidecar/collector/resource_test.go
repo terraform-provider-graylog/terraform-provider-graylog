@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -22,14 +22,14 @@ func TestAccCollector(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a collector",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -41,10 +41,10 @@ func TestAccCollector(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a collector",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/sidecar/collectors",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -56,7 +56,7 @@ func TestAccCollector(t *testing.T) {
   "validation_parameters": "",
   "default_template": ""
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				collectorBody = `{
   "id": "5ec65adb2ab79c001226759c",
   "name": "foo",
@@ -69,7 +69,7 @@ func TestAccCollector(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -107,10 +107,10 @@ resource "graylog_sidecar_collector" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a collector",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -122,7 +122,7 @@ resource "graylog_sidecar_collector" "test" {
   "validation_parameters": "",
   "default_template": ""
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				collectorBody = `{
   "id": "5ec65adb2ab79c001226759c",
   "name": "foo_updated",
@@ -135,7 +135,7 @@ resource "graylog_sidecar_collector" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -154,14 +154,14 @@ resource "graylog_sidecar_collector" "test" {
 
 	deleteRoute := flute.Route{
 		Name: "delete a collector",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

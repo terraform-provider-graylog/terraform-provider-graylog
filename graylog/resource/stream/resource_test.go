@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -23,14 +23,14 @@ func TestAccStream(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a stream",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -42,10 +42,10 @@ func TestAccStream(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a stream",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/streams",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -55,7 +55,7 @@ func TestAccStream(t *testing.T) {
 	"remove_matches_from_default_stream": false,
   "index_set_id": "5e9861442ab79c0012e7d1c4"
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				streamBody = `{
   "id": "5ea26bb42ab79c0012521287",
   "creator_user_id": "admin",
@@ -78,7 +78,7 @@ func TestAccStream(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -90,14 +90,14 @@ func TestAccStream(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a stream",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -129,10 +129,10 @@ resource "graylog_stream" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a stream",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -142,7 +142,7 @@ resource "graylog_stream" "test" {
 	"remove_matches_from_default_stream": false,
   "index_set_id": "5e9861442ab79c0012e7d1c4"
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				streamBody = `{
   "id": "5ea26bb42ab79c0012521287",
   "creator_user_id": "admin",
@@ -165,7 +165,7 @@ resource "graylog_stream" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},

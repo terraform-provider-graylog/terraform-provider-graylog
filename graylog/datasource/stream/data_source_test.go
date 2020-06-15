@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -18,14 +18,14 @@ func TestAccStream(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get streams",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/streams",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -130,14 +130,14 @@ func TestAccStream_byStreamID(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get streams",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/streams/000000000000000000000003",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,

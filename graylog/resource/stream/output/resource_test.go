@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -23,14 +23,14 @@ func TestAccStreamOutput(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a stream output",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -42,16 +42,16 @@ func TestAccStreamOutput(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a stream output",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 			BodyJSONString: `{
   "outputs": ["5ea2a4442ab79c001274d9dc"]
 }`,
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				outputBody = `{
   "total": 1,
   "outputs": [
@@ -70,7 +70,7 @@ func TestAccStreamOutput(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 202,
 			},
@@ -79,16 +79,16 @@ func TestAccStreamOutput(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a stream output",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				outputBody = ``
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -115,16 +115,16 @@ resource "graylog_stream_output" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a stream output",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 			//			BodyJSONString: `{
 			//  "outputs": ["5ea2a4442ab79c001274d9dc", "5e9989962ab79c001156f7db"]
 			//}`,
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				outputBody = `{
   "total": 2,
   "outputs": [
@@ -164,7 +164,7 @@ resource "graylog_stream_output" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 202,
 			},

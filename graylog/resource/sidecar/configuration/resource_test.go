@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -22,14 +22,14 @@ func TestAccConfiguration(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a configuration",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -41,10 +41,10 @@ func TestAccConfiguration(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a configuration",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/sidecar/configurations",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -53,7 +53,7 @@ func TestAccConfiguration(t *testing.T) {
   "color": "#00796b",
   "template": "fields_under_root: true"
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				configurationBody = `{
   "id": "5ec7027f2ab79c001226e584",
   "collector_id": "5ec65adb2ab79c001226759c",
@@ -63,7 +63,7 @@ func TestAccConfiguration(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -97,10 +97,10 @@ resource "graylog_sidecar_configuration" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a configuration",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -109,7 +109,7 @@ resource "graylog_sidecar_configuration" "test" {
   "color": "#00796b",
   "template": "fields_under_root: true"
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				configurationBody = `{
   "id": "5ec7027f2ab79c001226e584",
   "collector_id": "5ec65adb2ab79c001226759c",
@@ -119,7 +119,7 @@ resource "graylog_sidecar_configuration" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -135,14 +135,14 @@ resource "graylog_sidecar_configuration" "test" {
 
 	deleteRoute := flute.Route{
 		Name: "delete a configuration",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourcePath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},

@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -24,14 +24,14 @@ func TestAccEventNotification(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a event notification",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -43,10 +43,10 @@ func TestAccEventNotification(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a event notification",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -57,7 +57,7 @@ func TestAccEventNotification(t *testing.T) {
     "url": "http://example.com"
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				notificationBody = `{
   "id": "5ea3c1d72ab79c00127567fe",
   "title": "http",
@@ -69,7 +69,7 @@ func TestAccEventNotification(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -87,14 +87,14 @@ func TestAccEventNotification(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a event notification",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -126,10 +126,10 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a event notification",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -141,7 +141,7 @@ EOF
     "url": "http://example.com"
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				notificationBody = `{
   "id": "5ea3c1d72ab79c00127567fe",
   "title": "http",
@@ -153,7 +153,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},

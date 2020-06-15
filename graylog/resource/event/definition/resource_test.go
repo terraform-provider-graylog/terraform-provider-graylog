@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -24,14 +24,14 @@ func TestAccEventDefinition(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a event definition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -43,10 +43,10 @@ func TestAccEventDefinition(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a event definition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -93,7 +93,7 @@ func TestAccEventDefinition(t *testing.T) {
   ]
 }
 `,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				definitionBody = `{
   "id": "5ea3c8b42ab79c00127570c4",
   "title": "new-event-definition",
@@ -149,7 +149,7 @@ func TestAccEventDefinition(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -211,14 +211,14 @@ func TestAccEventDefinition(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a event definition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -285,10 +285,10 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a event definition",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -335,7 +335,7 @@ EOF
     }
   ]
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				definitionBody = `{
   "id": "5ea3c8b42ab79c00127570c4",
   "title": "new-event-definition",
@@ -391,7 +391,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},

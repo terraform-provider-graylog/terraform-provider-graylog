@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -24,14 +24,14 @@ func TestAccExtractor(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a extractor",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -43,10 +43,10 @@ func TestAccExtractor(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a extractor",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -68,7 +68,7 @@ func TestAccExtractor(t *testing.T) {
   "condition_type": "none",
   "condition_value": ""
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				conditionBody = `{
   "id": "553e37b0-86a8-11ea-a7d4-0242ac120004",
   "title": "test",
@@ -178,7 +178,7 @@ func TestAccExtractor(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -190,14 +190,14 @@ func TestAccExtractor(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a extractor",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -240,10 +240,10 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a extractor",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         resourceURLPath,
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -266,7 +266,7 @@ EOF
   "condition_value": ""
 }
 `,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				conditionBody = `{
   "id": "553e37b0-86a8-11ea-a7d4-0242ac120004",
   "title": "test updated",
@@ -376,7 +376,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},

@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/provider"
 )
 
@@ -35,7 +35,7 @@ func SetEnv() error {
 }
 
 func SetHTTPClient(t *testing.T, routes ...flute.Route) {
-	transport := &flute.Transport{
+	transport := flute.Transport{
 		T: t,
 		Services: []flute.Service{
 			{

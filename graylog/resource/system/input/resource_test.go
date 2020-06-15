@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -20,14 +20,14 @@ func TestAccInput(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a input",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/system/inputs/5ea252212ab79c001251f682",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -39,10 +39,10 @@ func TestAccInput(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a input",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/system/inputs",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -57,7 +57,7 @@ func TestAccInput(t *testing.T) {
     "port": 12201
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				inputBody = `{
   "title": "gelf udp",
   "global": true,
@@ -78,7 +78,7 @@ func TestAccInput(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},
@@ -90,14 +90,14 @@ func TestAccInput(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a input",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "DELETE",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/system/inputs/5ea252212ab79c001251f682",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 204,
 			},
@@ -134,10 +134,10 @@ EOF
 
 	updateRoute := flute.Route{
 		Name: "update a input",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "PUT",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/system/inputs/5ea252212ab79c001251f682",
 			PartOfHeader: testutil.Header(),
 			BodyJSONString: `{
@@ -152,7 +152,7 @@ EOF
     "port": 12202
   }
 }`,
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				inputBody = `{
   "title": "gelf udp updated",
   "global": true,
@@ -173,7 +173,7 @@ EOF
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 201,
 			},

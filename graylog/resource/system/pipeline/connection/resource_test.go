@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform/helper/resource"
-	"github.com/suzuki-shunsuke/flute/flute"
+	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )
 
@@ -23,14 +23,14 @@ func TestAccPipelineConnection(t *testing.T) {
 
 	getRoute := flute.Route{
 		Name: "get a pipeline connection",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "GET",
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         "/api/system/pipelines/connections/5ea26bb42ab79c0012521287",
 			PartOfHeader: testutil.Header(),
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Response: func(req *http.Request) (*http.Response, error) {
 				return &http.Response{
 					StatusCode: 200,
@@ -42,17 +42,17 @@ func TestAccPipelineConnection(t *testing.T) {
 
 	postRoute := flute.Route{
 		Name: "create a pipeline connection",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 			BodyJSONString: `{
 			  "stream_id": "5ea26bb42ab79c0012521287",
 			  "pipeline_ids": ["5ea3e4122ab79c001275832c"]
 			}`,
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				connectionBody = `{
   "stream_id": "5ea26bb42ab79c0012521287",
   "pipeline_ids": [
@@ -62,7 +62,7 @@ func TestAccPipelineConnection(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -78,17 +78,17 @@ func TestAccPipelineConnection(t *testing.T) {
 
 	deleteRoute := flute.Route{
 		Name: "delete a pipeline connection",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 			// BodyJSONString: `{
 			//   "stream_id": "5ea26bb42ab79c0012521287",
 			//   "pipeline_ids": []
 			// }`,
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				connectionBody = `{
   "stream_id": "5ea26bb42ab79c0012521287",
   "pipeline_ids": [],
@@ -96,7 +96,7 @@ func TestAccPipelineConnection(t *testing.T) {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
@@ -126,17 +126,17 @@ resource "graylog_pipeline_connection" "test" {
 
 	updateRoute := flute.Route{
 		Name: "update a pipeline connection",
-		Matcher: &flute.Matcher{
+		Matcher: flute.Matcher{
 			Method: "POST",
 			BodyJSONString: `{
   "stream_id": "5ea26bb42ab79c0012521287",
   "pipeline_ids": ["5ea3e4122ab79c001275832c","5ea3f3442ab79c00127591d6"]
 }`,
 		},
-		Tester: &flute.Tester{
+		Tester: flute.Tester{
 			Path:         postURLPath,
 			PartOfHeader: testutil.Header(),
-			Test: func(t *testing.T, req *http.Request, svc *flute.Service, route *flute.Route) {
+			Test: func(t *testing.T, req *http.Request, svc flute.Service, route flute.Route) {
 				connectionBody = `{
   "stream_id": "5ea26bb42ab79c0012521287",
   "pipeline_ids": [
@@ -147,7 +147,7 @@ resource "graylog_pipeline_connection" "test" {
 }`
 			},
 		},
-		Response: &flute.Response{
+		Response: flute.Response{
 			Base: http.Response{
 				StatusCode: 200,
 			},
