@@ -34,7 +34,12 @@ func read(d *schema.ResourceData, m interface{}) error {
 		}
 		cnt := 0
 		var data map[string]interface{}
-		for _, a := range dashboards["dashboards"].([]interface{}) {
+		key := "dashboards"
+		if dashboards[key] == nil {
+			// Graylog 3.2.2+
+			key = "views"
+		}
+		for _, a := range dashboards[key].([]interface{}) {
 			dashboard := a.(map[string]interface{})
 			if dashboard["title"].(string) == title {
 				data = dashboard
