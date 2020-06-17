@@ -101,7 +101,7 @@ func TestAccDashboard2(t *testing.T) {
 				return &http.Response{
 					StatusCode: 200,
 					Body: ioutil.NopCloser(strings.NewReader(`{
-  "total": 2,
+  "total": 1,
   "views": [
     {
       "id": "5ea8315b2ab79c00129dcba2",
