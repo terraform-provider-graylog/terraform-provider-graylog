@@ -41,8 +41,6 @@ func readByTitle(ctx context.Context, d *schema.ResourceData, cl *client.Client,
 	if err != nil {
 		return err
 	}
-	cnt := 0
-	var data map[string]interface{}
 	ds, ok := dashboards[keyDashboards]
 	if !ok {
 		// Graylog 3.3.0+
@@ -53,17 +51,17 @@ func readByTitle(ctx context.Context, d *schema.ResourceData, cl *client.Client,
 			return errors.New(`the response of Graylog API GET /api/dashboards is unexpected. The field "dashboards" and "views" aren't found`)
 		}
 	}
+	var data map[string]interface{}
 	for _, a := range ds.([]interface{}) {
 		dashboard := a.(map[string]interface{})
 		if dashboard[keyTitle].(string) == title {
-			data = dashboard
-			cnt++
-			if cnt > 1 {
+			if data != nil {
 				return errors.New("title isn't unique")
 			}
+			data = dashboard
 		}
 	}
-	if cnt == 0 {
+	if data == nil {
 		return errors.New("matched dashboard is not found")
 	}
 	return setDataToResourceData(d, data)
