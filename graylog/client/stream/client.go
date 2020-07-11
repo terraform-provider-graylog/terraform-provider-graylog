@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(
@@ -20,7 +20,7 @@ func (cl *Client) Get(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/streams/" + id,
 		ResponseBody: &body,
@@ -30,7 +30,7 @@ func (cl *Client) Get(
 
 func (cl *Client) Gets(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/streams",
 		ResponseBody: &body,
@@ -46,7 +46,7 @@ func (cl *Client) Create(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "POST",
 		Path:         "/streams",
 		RequestBody:  data,
@@ -65,7 +65,7 @@ func (cl *Client) Update(
 		return nil, nil, errors.New("request body is nil")
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "PUT",
 		Path:         "/streams/" + id,
 		RequestBody:  data,
@@ -78,7 +78,7 @@ func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error)
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/streams/" + id,
 	})
@@ -89,7 +89,7 @@ func (cl *Client) Resume(ctx context.Context, id string) (*http.Response, error)
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "POST",
 		Path:   "/streams/" + id + "/resume",
 	})
@@ -100,7 +100,7 @@ func (cl *Client) Pause(ctx context.Context, id string) (*http.Response, error) 
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "POST",
 		Path:   "/streams/" + id + "/pause",
 	})

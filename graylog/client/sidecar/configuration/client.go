@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(
@@ -20,7 +20,7 @@ func (cl *Client) Get(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/sidecar/configurations/" + id,
 		ResponseBody: &body,
@@ -36,7 +36,7 @@ func (cl *Client) Create(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "POST",
 		Path:         "/sidecar/configurations",
 		RequestBody:  configuration,
@@ -56,7 +56,7 @@ func (cl *Client) Update(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "PUT",
 		Path:         "/sidecar/configurations/" + id,
 		RequestBody:  configuration,
@@ -70,7 +70,7 @@ func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error)
 		return nil, errors.New("id is required")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/sidecar/configurations/" + id,
 	})
@@ -84,7 +84,7 @@ func (cl *Client) Assign(
 		return nil, errors.New("request body is nil")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/sidecars/configurations",
 		RequestBody: nodes,

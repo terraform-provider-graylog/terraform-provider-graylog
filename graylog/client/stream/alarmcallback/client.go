@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(
@@ -23,7 +23,7 @@ func (cl *Client) Get(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/streams/" + streamID + "/alarmcallbacks/" + id,
 		ResponseBody: &body,
@@ -42,7 +42,7 @@ func (cl *Client) Create(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "POST",
 		Path:         "/streams/" + streamID + "/alarmcallbacks",
 		RequestBody:  data,
@@ -64,7 +64,7 @@ func (cl *Client) Update(
 		return nil, errors.New("request body is nil")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/streams/" + streamID + "/alarmcallbacks/" + id,
 		RequestBody: data,
@@ -80,7 +80,7 @@ func (cl *Client) Delete(ctx context.Context, streamID, id string) (*http.Respon
 		return nil, errors.New("id is required")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/streams/" + streamID + "/alarmcallbacks/" + id,
 	})

@@ -9,12 +9,12 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/system/ldap/settings",
 		ResponseBody: &body,
@@ -28,7 +28,7 @@ func (cl *Client) Update(
 	if data == nil {
 		return nil, errors.New("request body is nil")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/system/ldap/settings",
 		RequestBody: data,
@@ -37,7 +37,7 @@ func (cl *Client) Update(
 }
 
 func (cl *Client) Delete(ctx context.Context) (*http.Response, error) {
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/system/ldap/settings",
 	})

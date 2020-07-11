@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) GetOutputsOfStream(
@@ -19,7 +19,7 @@ func (cl *Client) GetOutputsOfStream(
 		return nil, nil, errors.New("stream id is required")
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/streams/" + streamID + "/outputs",
 		ResponseBody: &body,
@@ -34,7 +34,7 @@ func (cl *Client) AssociateOutputsWithStream(
 		return nil, errors.New("stream id is required")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "POST",
 		Path:   "/streams/" + streamID + "/outputs",
 		RequestBody: map[string]interface{}{
@@ -52,7 +52,7 @@ func (cl *Client) Delete(ctx context.Context, streamID, id string) (*http.Respon
 		return nil, errors.New("output id is required")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/streams/" + streamID + "/outputs/" + id,
 	})

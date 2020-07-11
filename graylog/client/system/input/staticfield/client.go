@@ -8,13 +8,13 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Create(
 	ctx context.Context, inputID, key, value string,
 ) (*http.Response, error) {
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "POST",
 		Path:   "/system/inputs/" + inputID + "/staticfields",
 		RequestBody: map[string]string{
@@ -26,7 +26,7 @@ func (cl *Client) Create(
 }
 
 func (cl *Client) Delete(ctx context.Context, inputID, id string) (*http.Response, error) {
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/system/inputs/" + inputID + "/staticfields/" + id,
 	})
