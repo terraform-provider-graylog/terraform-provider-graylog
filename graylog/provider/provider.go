@@ -6,7 +6,7 @@ import (
 )
 
 func Configure(d *schema.ResourceData) (interface{}, error) {
-	cfg := &config.Config{
+	cfg := config.Config{
 		Endpoint:     d.Get("web_endpoint_uri").(string),
 		AuthName:     d.Get("auth_name").(string),
 		AuthPassword: d.Get("auth_password").(string),

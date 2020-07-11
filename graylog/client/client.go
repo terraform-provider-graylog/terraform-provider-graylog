@@ -64,22 +64,22 @@ type Client struct {
 }
 
 func New(m interface{}) (Client, error) {
-	config := m.(*config.Config)
+	cfg := m.(config.Config)
 
-	httpClient := httpclient.New(config.Endpoint)
-	xRequestedBy := config.XRequestedBy
+	httpClient := httpclient.New(cfg.Endpoint)
+	xRequestedBy := cfg.XRequestedBy
 	if xRequestedBy == "" {
 		xRequestedBy = "terraform-provider-graylog"
 	}
 	httpClient.SetRequest = func(req *http.Request) error {
 		req.Header.Set("Content-Type", "application/json")
 		req.Header.Set("X-Requested-By", xRequestedBy)
-		req.SetBasicAuth(config.AuthName, config.AuthPassword)
+		req.SetBasicAuth(cfg.AuthName, cfg.AuthPassword)
 		return nil
 	}
 
 	return Client{
-		APIVersion: config.APIVersion,
+		APIVersion: cfg.APIVersion,
 		AlarmCallback: alarmcallback.Client{
 			Client: httpClient,
 		},

@@ -7,7 +7,7 @@ import (
 )
 
 func TestConfig_LoadAndValidate(t *testing.T) {
-	cfg := &Config{
+	cfg := Config{
 		Endpoint:     "http://example.com:9000/api",
 		AuthName:     "xxx",
 		AuthPassword: "token",
