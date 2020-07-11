@@ -306,10 +306,10 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/suzuki-shunsuke/flute/v2 v2.0.0 h1:cDpi+h9wceJuOEjOxTvZNQXsIS+lv2Ism4ZdfYgMOnU=
 github.com/suzuki-shunsuke/flute/v2 v2.0.0/go.mod h1:wsUAUZbz+DSjv+XDv/gZeEX/mMu1y9kzIXCN5Slu6NY=
 github.com/suzuki-shunsuke/go-cliutil v0.0.0-20181211154308-176f852d9bca/go.mod h1:Vq3NkhgmA9DT/2UZ08x/3A34xxvzQ/vTMABnTWKoMbY=
-github.com/suzuki-shunsuke/go-dataeq v1.0.0 h1:o4WSG5LBoQfDFG9eTxxvKw1kksAAmYmTo+MVzhYL+nM=
-github.com/suzuki-shunsuke/go-dataeq v1.0.0/go.mod h1:y9Jf/g370ehd4VBPajzO2Ir8kj+Y4OR+yRu+T5CiK88=
 github.com/suzuki-shunsuke/go-httpclient v1.0.0 h1:YWg5KXySdeR7P+j16p1GS5FIkxUemndWHSE57G+70OA=
 github.com/suzuki-shunsuke/go-httpclient v1.0.0/go.mod h1:Yi2v1rwKD0BcburY4hM9HVKIm/nGbbHwFqAUXxD0728=
+github.com/suzuki-shunsuke/go-dataeq v1.0.1 h1:ruo7fZ2tT1g5wSWxNTXbDzbdKZRyycnUiAQrhkrOWxw=
+github.com/suzuki-shunsuke/go-dataeq v1.0.1/go.mod h1:y9Jf/g370ehd4VBPajzO2Ir8kj+Y4OR+yRu+T5CiK88=
 github.com/suzuki-shunsuke/go-jsoneq v0.1.2 h1:A4czEbmFqSELTbrEtXVo4dSgfz2e2Z0y6G3OpExUML8=
 github.com/suzuki-shunsuke/go-jsoneq v0.1.2/go.mod h1:ETXAwfruZTqMMKDxc9CYoS34CNSsnzcdcVIAW3+RujI=
 github.com/suzuki-shunsuke/gomic v0.6.0/go.mod h1:/+uhQJ1H5f9ythus/MbXOotAZDmkN1QOjKlsSiH2v+I=
