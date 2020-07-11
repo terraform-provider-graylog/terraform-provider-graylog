@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
@@ -17,7 +17,7 @@ func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *
 		return nil, nil, errors.New("id is required")
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/dashboards/" + id,
 		ResponseBody: &body,
@@ -27,7 +27,7 @@ func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *
 
 func (cl *Client) Gets(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/dashboards",
 		ResponseBody: &body,
@@ -42,7 +42,7 @@ func (cl *Client) Create(
 		return nil, nil, errors.New("request body is nil")
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "POST",
 		Path:         "/dashboards",
 		RequestBody:  data,
@@ -60,7 +60,7 @@ func (cl *Client) Update(
 	if data == nil {
 		return nil, errors.New("request body is nil")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/dashboards/" + id,
 		RequestBody: data,
@@ -72,7 +72,7 @@ func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error)
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/dashboards/" + id,
 	})

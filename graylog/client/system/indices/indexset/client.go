@@ -12,7 +12,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
@@ -21,7 +21,7 @@ func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/system/indices/index_sets/" + id,
 		ResponseBody: &body,
@@ -51,7 +51,7 @@ func (cl *Client) Gets(
 		}
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/system/indices/index_sets",
 		Query:        query,
@@ -75,7 +75,7 @@ func (cl *Client) Create(
 	if v, ok := data["creation_date"]; !ok || v == "" || v == nil {
 		data["creation_date"] = genCreationDate()
 	}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "POST",
 		Path:         "/system/indices/index_sets",
 		RequestBody:  data,
@@ -95,7 +95,7 @@ func (cl *Client) Update(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "PUT",
 		Path:         "/system/indices/index_sets/" + id,
 		RequestBody:  data,
@@ -109,7 +109,7 @@ func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error)
 		return nil, errors.New("id is required")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/system/indices/index_sets/" + id,
 	})

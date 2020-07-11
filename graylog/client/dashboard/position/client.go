@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Update(
@@ -22,7 +22,7 @@ func (cl *Client) Update(
 		return nil, errors.New("request body is nil")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "PUT",
 		Path:        "/dashboards/" + dashboardID + "/positions",
 		RequestBody: data,

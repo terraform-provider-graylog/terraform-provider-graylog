@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) GetConnectionsOfStream(
@@ -19,7 +19,7 @@ func (cl *Client) GetConnectionsOfStream(
 		return nil, nil, errors.New("stream id is required")
 	}
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/system/pipelines/connections/" + streamID,
 		ResponseBody: &body,
@@ -34,7 +34,7 @@ func (cl *Client) ConnectPipelinesToStream(
 		return nil, errors.New("request body is nil")
 	}
 
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:      "POST",
 		Path:        "/system/pipelines/connections/to_stream",
 		RequestBody: data,

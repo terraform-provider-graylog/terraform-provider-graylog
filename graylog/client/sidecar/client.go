@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	Client *httpclient.Client
+	Client httpclient.Client
 }
 
 func (cl *Client) Get(
@@ -20,7 +20,7 @@ func (cl *Client) Get(
 	}
 
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/sidecars/" + id,
 		ResponseBody: &body,
@@ -30,7 +30,7 @@ func (cl *Client) Get(
 
 func (cl *Client) GetAll(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
-	resp, err := cl.Client.Call(ctx, &httpclient.CallParams{
+	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
 		Path:         "/sidecars/all",
 		ResponseBody: &body,
