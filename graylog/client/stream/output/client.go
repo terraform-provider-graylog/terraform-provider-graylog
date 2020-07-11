@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) GetOutputsOfStream(
+func (cl Client) GetOutputsOfStream(
 	ctx context.Context, streamID string,
 ) (map[string]interface{}, *http.Response, error) {
 	if streamID == "" {
@@ -27,7 +27,7 @@ func (cl *Client) GetOutputsOfStream(
 	return body, resp, err
 }
 
-func (cl *Client) AssociateOutputsWithStream(
+func (cl Client) AssociateOutputsWithStream(
 	ctx context.Context, streamID string, outputIDs []string,
 ) (*http.Response, error) {
 	if streamID == "" {
@@ -44,7 +44,7 @@ func (cl *Client) AssociateOutputsWithStream(
 	return resp, err
 }
 
-func (cl *Client) Delete(ctx context.Context, streamID, id string) (*http.Response, error) {
+func (cl Client) Delete(ctx context.Context, streamID, id string) (*http.Response, error) {
 	if streamID == "" {
 		return nil, errors.New("stream id is required")
 	}

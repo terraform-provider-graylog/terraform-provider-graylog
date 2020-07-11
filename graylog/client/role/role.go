@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) Get(
+func (cl Client) Get(
 	ctx context.Context, name string,
 ) (map[string]interface{}, *http.Response, error) {
 	if name == "" {
@@ -28,7 +28,7 @@ func (cl *Client) Get(
 	return body, resp, err
 }
 
-func (cl *Client) Create(
+func (cl Client) Create(
 	ctx context.Context, role interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if role == nil {
@@ -45,7 +45,7 @@ func (cl *Client) Create(
 	return body, resp, err
 }
 
-func (cl *Client) Update(
+func (cl Client) Update(
 	ctx context.Context, name string, role interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if name == "" {
@@ -65,7 +65,7 @@ func (cl *Client) Update(
 	return body, resp, err
 }
 
-func (cl *Client) Delete(ctx context.Context, name string) (*http.Response, error) {
+func (cl Client) Delete(ctx context.Context, name string) (*http.Response, error) {
 	if name == "" {
 		return nil, errors.New("name is required")
 	}

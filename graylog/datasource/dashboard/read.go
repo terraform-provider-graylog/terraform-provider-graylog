@@ -25,7 +25,7 @@ func read(d *schema.ResourceData, m interface{}) error {
 	return errors.New("one of dashboard_id or title must be set")
 }
 
-func readByID(ctx context.Context, d *schema.ResourceData, cl *client.Client, id string) error {
+func readByID(ctx context.Context, d *schema.ResourceData, cl client.Client, id string) error {
 	if _, ok := d.GetOk(keyTitle); ok {
 		return errors.New("both dashboard_id and title must not be set")
 	}
@@ -36,7 +36,7 @@ func readByID(ctx context.Context, d *schema.ResourceData, cl *client.Client, id
 	return setDataToResourceData(d, data)
 }
 
-func readByTitle(ctx context.Context, d *schema.ResourceData, cl *client.Client, title string) error {
+func readByTitle(ctx context.Context, d *schema.ResourceData, cl client.Client, title string) error {
 	dashboards, _, err := cl.Dashboard.Gets(ctx)
 	if err != nil {
 		return err

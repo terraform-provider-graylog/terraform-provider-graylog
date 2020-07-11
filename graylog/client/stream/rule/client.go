@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) Get(
+func (cl Client) Get(
 	ctx context.Context, streamID, id string,
 ) (map[string]interface{}, *http.Response, error) {
 	if streamID == "" {
@@ -31,7 +31,7 @@ func (cl *Client) Get(
 	return body, resp, err
 }
 
-func (cl *Client) Create(
+func (cl Client) Create(
 	ctx context.Context, streamID string, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if streamID == "" {
@@ -51,7 +51,7 @@ func (cl *Client) Create(
 	return body, resp, err
 }
 
-func (cl *Client) Update(
+func (cl Client) Update(
 	ctx context.Context, streamID, id string, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if streamID == "" {
@@ -74,7 +74,7 @@ func (cl *Client) Update(
 	return body, resp, err
 }
 
-func (cl *Client) Delete(ctx context.Context, streamID, id string) (*http.Response, error) {
+func (cl Client) Delete(ctx context.Context, streamID, id string) (*http.Response, error) {
 	if streamID == "" {
 		return nil, errors.New("stream id is required")
 	}

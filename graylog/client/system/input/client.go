@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
+func (cl Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
 	if id == "" {
 		return nil, nil, errors.New("id is required")
 	}
@@ -35,7 +35,7 @@ func renameFieldAttributesToConfiguration(input map[string]interface{}) {
 	}
 }
 
-func (cl *Client) Create(
+func (cl Client) Create(
 	ctx context.Context, input map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if input == nil {
@@ -53,7 +53,7 @@ func (cl *Client) Create(
 	return body, resp, err
 }
 
-func (cl *Client) Update(
+func (cl Client) Update(
 	ctx context.Context, id string, input map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if id == "" {
@@ -74,7 +74,7 @@ func (cl *Client) Update(
 	return body, resp, err
 }
 
-func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error) {
+func (cl Client) Delete(ctx context.Context, id string) (*http.Response, error) {
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
