@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) Get(
+func (cl Client) Get(
 	ctx context.Context, id string,
 ) (map[string]interface{}, *http.Response, error) {
 	if id == "" {
@@ -28,7 +28,7 @@ func (cl *Client) Get(
 	return body, resp, err
 }
 
-func (cl *Client) GetAll(ctx context.Context) (map[string]interface{}, *http.Response, error) {
+func (cl Client) GetAll(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",

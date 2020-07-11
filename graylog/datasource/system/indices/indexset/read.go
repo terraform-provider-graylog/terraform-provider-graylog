@@ -29,7 +29,7 @@ func read(d *schema.ResourceData, m interface{}) error {
 	return errors.New("one of index_set_id or title or prefix must be set")
 }
 
-func readFromID(ctx context.Context, d *schema.ResourceData, cl *client.Client, id string) error {
+func readFromID(ctx context.Context, d *schema.ResourceData, cl client.Client, id string) error {
 	if _, ok := d.GetOk("title"); ok {
 		return errors.New("only one of index_set_id or title or index_prefix must be set")
 	}
@@ -43,7 +43,7 @@ func readFromID(ctx context.Context, d *schema.ResourceData, cl *client.Client, 
 	return setDataToResourceData(d, data)
 }
 
-func readFromTitle(ctx context.Context, d *schema.ResourceData, cl *client.Client, title string) error {
+func readFromTitle(ctx context.Context, d *schema.ResourceData, cl client.Client, title string) error {
 	if _, ok := d.GetOk("index_prefix"); ok {
 		return errors.New("only one of index_set_id or title or index_prefix must be set")
 	}
@@ -69,7 +69,7 @@ func readFromTitle(ctx context.Context, d *schema.ResourceData, cl *client.Clien
 	return setDataToResourceData(d, data)
 }
 
-func readFromPrefix(ctx context.Context, d *schema.ResourceData, cl *client.Client, prefix string) error {
+func readFromPrefix(ctx context.Context, d *schema.ResourceData, cl client.Client, prefix string) error {
 	indexSets, _, err := cl.IndexSet.Gets(ctx, nil)
 	if err != nil {
 		return err

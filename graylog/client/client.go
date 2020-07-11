@@ -63,7 +63,7 @@ type Client struct {
 	User                    user.Client
 }
 
-func New(m interface{}) (*Client, error) {
+func New(m interface{}) (Client, error) {
 	config := m.(*config.Config)
 
 	httpClient := httpclient.New(config.Endpoint)
@@ -78,7 +78,7 @@ func New(m interface{}) (*Client, error) {
 		return nil
 	}
 
-	cl := &Client{
+	return Client{
 		APIVersion: config.APIVersion,
 		AlarmCallback: alarmcallback.Client{
 			Client: httpClient,
@@ -158,7 +158,5 @@ func New(m interface{}) (*Client, error) {
 		User: user.Client{
 			Client: httpClient,
 		},
-	}
-
-	return cl, nil
+	}, nil
 }

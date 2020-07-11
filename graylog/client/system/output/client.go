@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl *Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
+func (cl Client) Get(ctx context.Context, id string) (map[string]interface{}, *http.Response, error) {
 	if id == "" {
 		return nil, nil, errors.New("id is required")
 	}
@@ -32,7 +32,7 @@ type GetAllParams struct {
 	Stats bool
 }
 
-func (cl *Client) Create(
+func (cl Client) Create(
 	ctx context.Context, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if data == nil {
@@ -49,7 +49,7 @@ func (cl *Client) Create(
 	return body, resp, err
 }
 
-func (cl *Client) Update(
+func (cl Client) Update(
 	ctx context.Context, id string, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	if id == "" {
@@ -69,7 +69,7 @@ func (cl *Client) Update(
 	return body, resp, err
 }
 
-func (cl *Client) Delete(ctx context.Context, id string) (*http.Response, error) {
+func (cl Client) Delete(ctx context.Context, id string) (*http.Response, error) {
 	if id == "" {
 		return nil, errors.New("id is required")
 	}
