@@ -32,25 +32,29 @@ func SchemaMap() map[string]*schema.Schema {
 			Type:     schema.TypeString,
 			Required: true,
 			DefaultFunc: schema.MultiEnvDefaultFunc([]string{
-				"GRAYLOG_AUTH_NAME"}, nil),
+				"GRAYLOG_AUTH_NAME",
+			}, nil),
 		},
 		"auth_password": {
 			Type:     schema.TypeString,
 			Required: true,
 			DefaultFunc: schema.MultiEnvDefaultFunc([]string{
-				"GRAYLOG_AUTH_PASSWORD"}, nil),
+				"GRAYLOG_AUTH_PASSWORD",
+			}, nil),
 		},
 		"x_requested_by": {
 			Type:     schema.TypeString,
 			Optional: true,
 			DefaultFunc: schema.MultiEnvDefaultFunc([]string{
-				"GRAYLOG_X_REQUESTED_BY"}, "terraform-provider-graylog"),
+				"GRAYLOG_X_REQUESTED_BY",
+			}, "terraform-provider-graylog"),
 		},
 		"api_version": {
 			Type:     schema.TypeString,
 			Optional: true,
 			DefaultFunc: schema.MultiEnvDefaultFunc([]string{
-				"GRAYLOG_API_VERSION"}, "v3"),
+				"GRAYLOG_API_VERSION",
+			}, "v3"),
 		},
 	}
 }
