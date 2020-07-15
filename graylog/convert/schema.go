@@ -6,7 +6,7 @@ import (
 
 func GetSchema(data interface{}, sc *schema.Schema) (interface{}, error) {
 	// ResourceData => Graylog API (Post/Update)
-	switch sc.Type {
+	switch sc.Type { //nolint:exhaustive
 	case schema.TypeList:
 		if sc.MinItems == 1 && sc.MaxItems == 1 {
 			return data.([]interface{})[0], nil
@@ -32,7 +32,7 @@ func GetSchema(data interface{}, sc *schema.Schema) (interface{}, error) {
 
 func SetSchema(data interface{}, sc *schema.Schema) (interface{}, error) {
 	// Graylog API (Get) => ResourceData
-	switch sc.Type {
+	switch sc.Type { //nolint:exhaustive
 	case schema.TypeList:
 		return SetTypeList(data, sc)
 	case schema.TypeSet:

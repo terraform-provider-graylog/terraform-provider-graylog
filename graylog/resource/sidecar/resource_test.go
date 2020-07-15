@@ -195,7 +195,7 @@ func TestAccSidecar(t *testing.T) {
 		},
 	}
 
-	var cnt = 0
+	cnt := 0
 
 	updateRoute := flute.Route{
 		Name: "update a sidecar",

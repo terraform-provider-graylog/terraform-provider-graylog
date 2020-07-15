@@ -25,10 +25,6 @@ func Resource() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"value": {
-				Type:     schema.TypeString,
-				Required: true,
-			},
 			"stream_id": {
 				Type:     schema.TypeString,
 				Required: true,
@@ -36,6 +32,11 @@ func Resource() *schema.Resource {
 			},
 
 			// Optional
+			"value": {
+				// value isn't needed for some type of stream rule
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 			"description": {
 				Type:     schema.TypeString,
 				Optional: true,
