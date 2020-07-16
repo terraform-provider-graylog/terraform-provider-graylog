@@ -2,7 +2,29 @@
   "extends": [
     "config:base"
   ],
-  "postUpdateOptions": [
-    "gomodTidy"
+  "packageRules": [
+    {
+      "packageNames": ["golang"],
+      "updateTypes": ["minor", "patch", "pin"],
+      "automerge": true
+    },
+    {
+      "packageNames": ["golangci/golangci-lint"],
+      "updateTypes": ["minor", "patch", "pin"],
+      "automerge": true
+    },
+    {
+      "packageNames": ["goreleaser/goreleaser"],
+      "updateTypes": ["minor", "patch", "pin"],
+      "automerge": true
+    },
+    {
+      "managers": ["gomod"],
+      "packagePatterns": [".*"],
+      "updateTypes": ["minor", "patch", "pin"],
+      "postUpdateOptions": [
+        "gomodTidy"
+      ]
+    }
   ]
 }
