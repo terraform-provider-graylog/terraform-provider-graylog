@@ -49,25 +49,3 @@ jobs:
         bash scripts/codecov_test.sh
         curl -s https://codecov.io/bash > /tmp/codecov.sh
         bash /tmp/codecov.sh
-
-    - name: remove changes
-      # Sometimes it is failed to release by goreleaser due to changes of go.sum
-      run: git checkout -- .
-    - name: fetch tags to release
-      run: git fetch --tags
-    - name: Unshallow
-      run: git fetch --prune --unshallow
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        version: latest
-        args: release --rm-dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Run GoReleaser (skip publish)
-      uses: goreleaser/goreleaser-action@v1
-      if: "! startsWith(github.ref, 'refs/tags/')"
-      with:
-        version: latest
-        args: release --rm-dist --snapshot
