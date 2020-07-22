@@ -9,16 +9,8 @@ page_title: "Graylog: graylog_dashboard_widget_positions"
 
 ## Argument Reference
 
-## Required Argument
-
-name | type
---- | ---
-dashboard_id | string
-positions | JSON string
-
-### Optional Argument
-
-Nothing.
+* `dashboard_id` - (Required) id of the dashboard which widgets are associated with. The data type is `string`.
+* `positions` - (Required) positions of widgets. The data type is `JSON string`.
 
 ### Attributes Reference
 

@@ -9,40 +9,29 @@ page_title: "Graylog: graylog_ldap_setting"
 
 ## Argument Reference
 
-### Required Argument
-
-name | example | type
---- | --- | ---
-system_username | | string
-ldap_uri | "ldap://localhost:389" | string
-search_base | | string
-search_pattern | | string
-display_name_attribute | | string
-default_group | | string |
+* `system_username` - (Required) The data type is `string`.
+* `ldap_uri` - (Required) The data type is `string`.
+* `search_base` - (Required) The data type is `string`.
+* `search_pattern` - (Required) The data type is `string`.
+* `display_name_attribute` - (Required) The data type is `string`.
+* `default_group` - (Required) The data type is `string`.
+* `description` - (Optional) The data type is `string`.
+* `enabled` - (Optional) The data type is `bool`.
+* `use_start_tls` - (Optional) The data type is `bool`.
+* `trust_all_certificates` - (Optional) The data type is `bool`.
+* `active_directory` - (Optional) The data type is `bool`.
+* `group_search_base` - (Optional) The data type is `string`.
+* `group_id_attribute` - (Optional) The data type is `string`.
+* `group_search_pattern` - (Optional) The data type is `string`.
+* `group_mapping` - (Optional) The data type is `map[string]string`.
+* `system_password` - (Optional) The data type is `string`.
 
 Note that `system_passoword` is optional as Terraform schema but is required to create a LDAP setting.
 If we make `system_password` required as Terrafrom schema, we have to store `system_password` in the Terraform state file, which some users wouldn't want it.
 
-### Optional Argument
-
-name | default | type | description
---- | --- | --- | ---
-description | "" | string |
-enabled | false | bool |
-use_start_tls | false | bool |
-trust_all_certificates | false | bool |
-active_directory | false | bool |
-group_search_base | "" | string |
-group_id_attribute | "" | string |
-group_search_pattern | "" | string |
-group_mapping | | map[string]string |
-system_password | "" | string | sensitive, computed
-
 ## Attributes Reference
 
-name | type
---- | ---
-system_password_set | bool
+* `system_password_set` - The data type is `bool`.
 
 ## Import
 

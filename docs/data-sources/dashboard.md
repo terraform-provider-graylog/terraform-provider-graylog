@@ -14,14 +14,12 @@ data "graylog_dashboard" "test" {
 }
 ```
 
-## Required Argument
+## Argument Reference
 
 One of `dashboard_id` or `title` must be set.
 
-## Attributes
+## Attributes Reference
 
-name | type
---- | ---
-title | string
-dashboard_id | string
-description | string
+* `title` - The data type is `string`
+* `dashboard_id` - The data type is `string`
+* `description` - The data type is `string`

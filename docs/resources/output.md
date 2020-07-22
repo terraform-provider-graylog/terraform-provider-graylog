@@ -9,22 +9,14 @@ page_title: "Graylog: graylog_output"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-title | string
-type | string
-configuration | JSON string
+* `title` - (Required) The title of the Output. The data type is `string`.
+* `type` - (Required) The type of the Output. The data type is `string`.
+* `configuration` - (Required) The configuration of the Output. The data type is `JSON string`.
 
 `configuration` is a JSON string.
 The format of `configuration` depends on the output type.
 Please see the [example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/output.tf).
 Using the [Graylog's API browser](https://docs.graylog.org/en/3.1/pages/configuration/rest_api.html) you can check the format of `configuration`.
-
-### Optional Argument
-
-None.
 
 ## Attributes Reference
 

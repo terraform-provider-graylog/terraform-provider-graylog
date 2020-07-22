@@ -9,24 +9,15 @@ page_title: "Graylog: graylog_sidecar_collector"
 
 ## Argument Reference
 
-### Required Argument
+* `name` - (Required) The Sidecar Collector name. The data type is `string`.
+* `service_type` - (Required) The data type is `string`.
+* `node_operating_system` - (Required) The data type is `string`.
+* `executable_path` - (Required) The data type is `string`.
+* `execute_parameters` - (Optional) The data type is `string`.
+* `validation_parameters` - (Optional) The data type is `string`.
+* `default_template` - (Optional) The data type is `string`.
 
-name | type
---- | ---
-name | string
-service_type | string
-node_operating_system | string
-executable_path | string
-
-### Optional Argument
-
-name | type | default
---- | --- | ---
-execute_parameters | string | ""
-validation_parameters | string | ""
-default_template | string | ""
-
-## Attrs Reference
+## Attributes Reference
 
 None.
 

@@ -11,32 +11,23 @@ page_title: "Graylog: graylog_extractor"
 
 ### Required Argument
 
-name | type
---- | ---
-input_id | string
-type | string
-title | string
-cursor_strategy
-source_field | string
-condition_type | string
-extractor_config | JSON string
-converters[].type | string
-converters[].config | JSON string
-
-### Optional Argument
-
-name | type | default
---- | --- | ---
-converters | list | []
-target_field | string | ""
-condition_value | string | ""
-order | int | 0
+* `input_id` - (Required) the Input id which the Extractor is associated with. The data type is `string`.
+* `type` - (Required) the type of the Extractor. The data type is `string`.
+* `title` - (Required) the title of the Extractor. The data type is `string`.
+* `cursor_strategy` - (Required) The data type is `string`.
+* `source_field` - (Required) The data type is `string`.
+* `condition_type` - (Required) the condition type of the Extractor. The data type is `string`.
+* `extractor_config` - (Required) The data type is `JSON string`.
+* `converters[].type` - (Required) the type of the converter. The data type is `string`.
+* `converters[].config` - (Required) the configuration of the converter. The data type is `JSON string`.
+* `converters` - (Optional) The data type is `list`. The default value is `[]`.
+* `target_field` - (Optional) The data type is `string`.
+* `condition_value` - (Optional) The data type is `string`.
+* `order` - (Optional) The data type is `int`.
 
 ### Attributes Reference
 
-name | type
---- | ---
-extractor_id | string
+* `extractor_id` - The id of the extractor. The data type is `string`.
 
 ## Import
 

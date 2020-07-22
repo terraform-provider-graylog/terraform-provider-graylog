@@ -9,22 +9,13 @@ page_title: "Graylog: graylog_user"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type | etc
---- | --- | ---
-username | string | force_new
-email | string |
-full_name | string |
-
-### Optional Argument
-
-name | default | type | etc
---- | --- | --- | ---
-password | string | sensitive
-roles | `[]` | string set |
-timezone | `""` | string | computed
-session_timeout_ms | | int | computed
+* `username` - (Required, Forces new resource) The data type is `string`.
+* `email` - (Required) The data type is `string`.
+* `full_name` - (Required) The data type is `string`.
+* `password` - (Optonal, Sensitive) The data type is `string`.
+* `roles` - (Optional) The data type is `set of string`.
+* `timezone` - (Optional, Computed) The data type is `string`.
+* `session_timeout_ms` - (Optional, Computed) The data type is `int`.
 
 ### password
 
@@ -33,15 +24,13 @@ Once the user is created, `password` is optional.
 
 ## Attributes Reference
 
-name | type
---- | ---
-user_id | string
-external | bool
-read_only | bool
-client_address | string
-session_active | bool
-last_activity | string
-permissions | string set
+* `user_id` - The data type is `string`.
+* `read_only` - The data type is `bool`.
+* `external` - The data type is `bool`.
+* `client_address` - The data type is `string`.
+* `session_active` - The data type is `bool`.
+* `last_activity` - The data type is `string`.
+* `permissions` - The data type is `set of string`.
 
 ## Import
 

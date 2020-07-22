@@ -9,22 +9,12 @@ page_title: "Graylog: graylog_dashboard"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-title | string
-description | string
-
-### Optional Argument
-
-None
+* `title` - (Required) Dashboard title. The data type is `string`.
+* `description` - (Required) Dashboard description. The data type is `string`.
 
 ## Attrs Reference
 
-name | type
---- | ---
-created_at | string
+* `created_at` - The date time when the Dashboard is created. The data type is `string`.
 
 ## Import
 

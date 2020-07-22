@@ -9,22 +9,14 @@ page_title: "Graylog: graylog_pipeline_connection"
 
 ## Argument Reference
 
-### Required Argument
+* `stream_id` - (Required) The stream id which the Pipelines are associated with. The data type is `string`.
+* `pipeline_ids` - (Required) The pipeline ids. The data type is `[]string`.
 
-name | type
---- | ---
-stream_id | string
-pipeline_ids | []string
-
-#### Note
+### Note
 
 This resource treats the stream id as the resource id,
 because there is no Graylog API to operate resource by connection pipeline id.
 So please make the stream id unique in all `graylog_pipeline_connection` resources.
-
-### Optional Argument
-
-None.
 
 ## Attributes Reference
 

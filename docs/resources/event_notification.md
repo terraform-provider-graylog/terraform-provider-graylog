@@ -9,23 +9,16 @@ page_title: "Graylog: graylog_event_notification"
 
 ## Argument Reference
 
-### Required Argument
+* `title` - (Required) The title of the Event Notification. The data type is `string`.
+* `config` - (Required) the configuration of the Event Notification. The data type is `JSON string`.
+* `description` - (Optional) the description of the Event Notification. The data type is `string`.
 
-name | type
---- | ---
-title | string
-config | JSON string
+### config
 
 `config` is a JSON string.
 The format of `config` depends on the Event Notification type.
 Please see the [example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/event_notification.tf).
 Using the [Graylog's API browser](https://docs.graylog.org/en/latest/pages/configuration/rest_api.html) you can check the format of `config`.
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-description | ""| string
 
 ## Attributes Reference
 

@@ -9,17 +9,8 @@ page_title: "Graylog: graylog_pipeline_rule"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-source | string
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-description | "" | string
+* `source` - (Required) The source of the Pipeline Rule. The data type is `string`.
+* `description` - (Optional) description of the Pipeline Rule. The data type is `string`.
 
 ## Attributes Reference
 

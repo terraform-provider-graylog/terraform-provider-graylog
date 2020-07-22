@@ -7,21 +7,20 @@ page_title: "Graylog: graylog_stream"
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/stream.tf)
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/datasource/stream/data_source.go)
 
-## Required Argument
+## Argument Reference
 
 One of `stream_id` or `title` must be set.
 If `title` is specified, the title must be unique in all streams.
 
-## Attributes
+## Attributes Reference
 
-name | type
---- | ---
-title | string
-stream_id | string
-index_set_id | string
-disabled | bool
-matching_type | string
-remove_matches_from_default_stream | bool
-is_default | bool
-creator_user_id | string
-created_at | string
+* `title` - The title of the Stream. The data type is `string`.
+* `index_set_id` - The id of the Index Set which the Stream is associated with. The data type is `string`.
+* `disabled` - The data type is `bool`.
+* `matching_type` - The data type is `string`.
+* `description` - The data type is `string`.
+* `remove_matches_from_default_stream` - The data type is `bool`.
+* `is_default` - The data type is `bool`.
+* `creator_user_id` - The user id who created the Stream. The data type is `string`.
+* `created_at` - The date time when the Stream is created. The data type is `string`.
+* `stream_id` - The id of the Stream. The data type is `string`.
