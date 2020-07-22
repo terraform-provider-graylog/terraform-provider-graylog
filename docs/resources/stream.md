@@ -9,29 +9,18 @@ page_title: "Graylog: graylog_stream"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-title | string
-index_set_id | string
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-disabled | | bool
-matching_type | | string
-description | | string
-remove_matches_from_default_stream | | bool
-is_default | | bool
+* `title` - (Required) The title of the Stream. The data type is `string`.
+* `index_set_id` - (Required) The id of the Index Set which the Stream is associated with. The data type is `string`.
+* `disabled` - (Optional) The data type is `bool`.
+* `matching_type` - (Optional) The data type is `string`.
+* `description` - (Optional) The data type is `string`.
+* `remove_matches_from_default_stream` - (Optional) The data type is `bool`.
+* `is_default` - (Optional) The data type is `bool`.
 
 ## Attributes Reference
 
-name | type | etc
---- | --- | ---
-creator_user_id | string | computed
-created_at | string | computed
+* `creator_user_id` - The user id who created the Stream. The data type is `string`.
+* `created_at` - The date time when the Stream is created. The data type is `string`.
 
 ## Import
 

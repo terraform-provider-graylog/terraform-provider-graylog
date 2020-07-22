@@ -39,21 +39,13 @@ resource "graylog_sidecars" "bar" {
 
 ## Argument Reference
 
-### Required Argument
+* `sidecars` - (Required) The data type is `[]object (set)`
+* `sidecars[].node_id` - (Required) The data type is `string`
+* `sidecars[].assignments` - (Required) The data type is `[]object (set)`
+* `sidecars[].assignments[].collector_id` - (Required) The data type is `string`
+* `sidecars[].assignments[].configuration_id` - (Required) The data type is `string`
 
-name | type
---- | ---
-sidecars | []object (set)
-sidecars[].node_id | string
-sidecars[].assignments | []object (set)
-sidecars[].assignments[].collector_id | string
-sidecars[].assignments[].configuration_id | string
-
-### Optional Argument
-
-None.
-
-## Attrs Reference
+## Attributes Reference
 
 None.
 

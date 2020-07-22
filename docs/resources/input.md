@@ -9,27 +9,16 @@ page_title: "Graylog: graylog_input"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-title | string
-type | string
-attributes | JSON string
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-global | false | bool
-node | "" | string
+* `title` - (Required) the title of the Input. The data type is `string`.
+* `type` - (Required) the type of the Input. The data type is `string`.
+* `attributes` - (Required) the attributes of the Input. The data type is `JSON string`.
+* `global` - (Optional) The data type is `bool`. The default value is `false`.
+* `node` - (Optional) The data type is `string`.
 
 ## Attributes Reference
 
-name | type
---- | ---
-created_at | string
-creator_user_id | string
+* `created_at` - The date time when the Index Set is created. The data type is `string`.
+* `creator_user_id` - The user id who created the Input. The data type is `string`.
 
 ## Import
 

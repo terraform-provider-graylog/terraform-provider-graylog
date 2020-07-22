@@ -9,27 +9,16 @@ page_title: "Graylog: graylog_stream_rule"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-field | string
-description | string
-type | int
-stream_id | string
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-value |  | string
-inverted | | bool
+* `field` - (Required) The data type is `string`.
+* `description` - (Required) The data type is `string`.
+* `type` - (Required) The data type is `int`.
+* `stream_id` - (Required) The data type is `string`.
+* `value` - (Optional) The data type is `string`.
+* `inverted` - (Optional) The data type is `bool`.
 
 ## Attributes Reference
 
-name | type
---- | ---
-rule_id | string
+* `rule_id` - The data type is `string`.
 
 ## Import
 

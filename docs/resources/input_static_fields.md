@@ -9,17 +9,12 @@ page_title: "Graylog: graylog_input_static_fields"
 
 ## Argument Reference
 
-### Required Argument
+* `input_id` - (Required) id of the Input which the static fields are associated with. The data type is `string`.
+* `fields` - (Optional) The data type is `map[string]string`.
 
-name | type
---- | ---
-input_id | string
+## Attributes Reference
 
-### Optional Argument
-
-name | default | type
---- | --- | ---
-fields | | map[string]string
+None.
 
 ## Import
 

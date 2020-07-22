@@ -9,21 +9,13 @@ page_title: "Graylog: graylog_stream_output"
 
 ## Argument Reference
 
-### Required Argument
+* `stream_id` - (Required, Forces new resource) Stream id which the Stream Output is associated with. The data type is `string`.
+* `output_ids` - (Required) The data type is `[]string`.
 
-name | type | etc
---- | --- | ---
-stream_id | string | `force new`
-output_ids | []string |
-
-#### Note
+### Note
 
 This resource treats the stream id as the resource id.
 So please make the stream id unique in all `graylog_stream_output` resources.
-
-### Optional Argument
-
-None.
 
 ## Attributes Reference
 

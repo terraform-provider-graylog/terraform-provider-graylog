@@ -14,13 +14,11 @@ data "graylog_sidecar" "test" {
 }
 ```
 
-## Required Argument
+## Argument Reference
 
 One of `node_id` or `node_name` must be set.
 
-## Attributes
+## Attributes Reference
 
-name | type
---- | ---
-node_id | string
-node_name | string
+* `node_id` - The data type is `string`.
+* `node_name` - The data type is `string`.

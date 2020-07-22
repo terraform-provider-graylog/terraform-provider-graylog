@@ -9,20 +9,12 @@ page_title: "Graylog: graylog_sidecar_configuration"
 
 ## Argument Reference
 
-### Required Argument
+* `name` - (Required) The name of the Sidecar Configuration. The data type is `string`.
+* `color` - (Required) The data type is `string`.
+* `collector_id` - (Required) The data type is `string`.
+* `template` - (Required) The data type is `string`.
 
-name | type
---- | ---
-name | string
-color | string
-collector_id | string
-template | string
-
-### Optional Argument
-
-None.
-
-## Attrs Reference
+## Attributes Reference
 
 None.
 

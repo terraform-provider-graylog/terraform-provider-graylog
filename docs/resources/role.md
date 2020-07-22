@@ -9,24 +9,13 @@ page_title: "Graylog: graylog_role"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-name | string
-permissions | []string
-
-### Optional Argument
-
-name | default | type
---- | --- | --- |
-description | `""` | string
+* `name` - (Required) The Role name. The data type is `string`.
+* `permissions` - (Required) The permissions of the Role. The data type is `[]string`.
+* `description` - (Optional) description of the Role. The data type is `string`.
 
 ## Attributes Reference
 
-name | type
---- | ---
-read_only | bool
+* `read_only` - (Optional) The data type is `bool`.
 
 ## Import
 

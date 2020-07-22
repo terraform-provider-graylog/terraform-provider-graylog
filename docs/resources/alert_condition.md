@@ -9,20 +9,11 @@ page_title: "Graylog: graylog_alert_condition"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-stream_id | string
-type | string
-title | string
-parameters | JSON string
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-in_grace | false | bool
+* `type` - (Required) Alert Condition type. The data type is `string`.
+* `title` - (Required) Alert Condition title. The data type is `string`.
+* `stream_id` - (Required) Stream id which the Alert Condition is associated with. The data type is `string`.
+* `parameters` - (Required) parameters of Alert Condition. The data type is `JSON string`.
+* `in_grace` - (Opitonal) The data type is `bool`. The default value is `false`.
 
 ### parameters
 
@@ -32,9 +23,7 @@ Please see the [example](https://github.com/terraform-provider-graylog/terraform
 
 ### Attributes Reference
 
-name | type
---- | ---
-alert_condition_id | string
+* `alert_condition_id` - Alert Condition id. The data type is `string`.
 
 ## Import
 

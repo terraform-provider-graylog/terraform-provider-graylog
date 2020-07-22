@@ -9,18 +9,10 @@ page_title: "Graylog: graylog_alarm_callback"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type
---- | ---
-type | string
-title | string
-stream_id | string
-configuration | JSON string
-
-### Optional Argument
-
-None
+* `type` - (Required) Alarm Callback type. The data type is `string`.
+* `title` - (Required) Alarm Callback title. The data type is `string`.
+* `stream_id` - (Required) Stream id which the Alarm Callback is associated with. The data type is `string`.
+* `configuration` - (Required) configuration of Alarm Callback. The data type is `JSON string`.
 
 ### configuration
 
@@ -30,9 +22,7 @@ Please see the [example](https://github.com/terraform-provider-graylog/terraform
 
 ## Attributes Reference
 
-name | type
---- | ---
-alarmcallback_id | string
+* `alarmcallback_id` - Alarm Callback id. The data type is `string`.
 
 ## Import
 

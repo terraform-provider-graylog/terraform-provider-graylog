@@ -11,15 +11,8 @@ page_title: "Graylog: graylog_pipeline"
 
 ### Required Argument
 
-name | type | etc
---- | --- | ---
-source | string |
-
-### Optional Argument
-
-name | default | type | etc
---- | --- | --- | ---
-description | string |
+* `source` - (Required) The source of the Pipeline. The data type is `string`.
+* `description` - (Required) The description of the Pipeline. The data type is `string`.
 
 ## Attributes Reference
 

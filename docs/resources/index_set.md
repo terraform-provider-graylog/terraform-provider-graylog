@@ -9,35 +9,22 @@ page_title: "Graylog: graylog_index_set"
 
 ## Argument Reference
 
-### Required Argument
-
-name | type | etc
---- | --- | ---
-title | string |
-index_prefix | string | `force new`
-rotation_strategy_class | string |
-rotation_strategy | JSON string |
-retention_strategy_class | string |
-retention_strategy | JSON string |
-index_analyzer | string |
-shards | int |
-index_optimization_max_num_segments | int |
-
-### Optional Argument
-
-name | default | type
---- | --- | ---
-description | "" | string
-replicas | 0 | int
-index_optimization_disabled | | bool
-writable | | bool
-default | | bool
+* `title` - (Required) the title of the Index Set. The data type is `string`.
+* `index_prefix` - (Required, Forces new resource) the index prefix of the Index Set. The data type is `string`.
+* `rotation_strategy_class` - (Required) the rotation strategy class of the Index Set. The data type is `string`.
+* `rotation_strategy` - (Required) the rotation strategy of the Index Set. The data type is `JSON string`.
+* `retention_strategy_class` - (Required) the retention strategy class of the Index Set. The data type is `string`.
+* `retention_strategy` - (Required) the retention strategy of the Index Set. The data type is `JSON string`.
+* `index_analyzer` - (Required) the Index Analyzer of the Index Set. The data type is `string`.
+* `shards` - (Required) the number of shards of the Index Set. The data type is `int`.
+* `description` - (Optional) the description of the Index Set. The data type is `string`.
+* `replicas` - (Optional) the number of the replicas of the Index Set. The data type is `int`.
+* `index_optimization_disabled` - (Optional) The data type is `bool`.
+* `default` - (Optional) The data type is `bool`.
 
 ## Attributes Reference
 
-name | type | etc
---- | --- | ---
-creation_date | computed | string |
+* `creation_date` - The date time when the Index Set is created. The data type is `string`.
 
 ## Import
 
