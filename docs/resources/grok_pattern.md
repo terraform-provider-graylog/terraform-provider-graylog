@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_grok_pattern"
----
-
 # Resource: graylog_grok_pattern
 
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/system/grok/resource.go)

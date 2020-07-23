@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_pipeline_connection"
----
-
 # Resource: graylog_pipeline_connection
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/pipeline.tf)

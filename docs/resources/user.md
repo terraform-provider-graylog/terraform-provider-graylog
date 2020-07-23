@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_user"
----
-
 # Resource: graylog_user
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)

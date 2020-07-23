@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_dashboard"
----
-
 # graylog_dashboard Data Source
 
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/datasource/dashboard/resource.go)

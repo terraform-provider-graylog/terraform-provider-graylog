@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_index_set"
----
-
 # graylog_index_set Data Source
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/index_set.tf)

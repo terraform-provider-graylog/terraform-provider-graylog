@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_sidecar_collector"
----
-
 # Resource: graylog_sidecar_collector
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/sidecar_collector.tf)

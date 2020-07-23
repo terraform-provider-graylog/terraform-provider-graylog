@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_role"
----
-
 # Resource: graylog_role
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/role.tf)

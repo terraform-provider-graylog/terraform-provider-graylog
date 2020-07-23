@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_ldap_setting"
----
-
 # Resource: graylog_ldap_setting
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/ldap_setting.tf)
