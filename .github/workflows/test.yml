@@ -47,5 +47,5 @@ jobs:
     - name: test
       run: |
         bash scripts/codecov_test.sh
-        curl -s https://codecov.io/bash > /tmp/codecov.sh
+        curl -sS https://codecov.io/bash > /tmp/codecov.sh
         bash /tmp/codecov.sh
