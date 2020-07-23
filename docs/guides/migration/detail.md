@@ -1,3 +1,7 @@
+---
+page_title: "Migration Guide Detail"
+---
+
 # Migration Guide Detail
 
 ## No changes

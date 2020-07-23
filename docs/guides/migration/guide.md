@@ -1,3 +1,7 @@
+---
+page_title: "Migration Guide"
+---
+
 # Migration Guide
 
 In this page, we describe the overview of how to migrate Terraform provider from [go-graylog v11.3.0](https://github.com/suzuki-shunsuke/go-graylog/tree/v11.3.0) to this provider.  
