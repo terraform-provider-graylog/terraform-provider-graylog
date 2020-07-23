@@ -1,3 +1,7 @@
+---
+page_title: "JSON string attributes"
+---
+
 # JSON string attributes
 
 In this provider, the type of some attributes is not complex type but JSON string.

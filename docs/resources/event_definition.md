@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_event_definition"
----
-
 # Resource: graylog_event_definition
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/event_definition.tf)

@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_dashboard_widget"
----
-
 # Resource: graylog_dashboard_widget
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/dashboard.tf)

@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_alarm_callback"
----
-
 # Resource: graylog_alarm_callback
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/alarm_callback.tf)

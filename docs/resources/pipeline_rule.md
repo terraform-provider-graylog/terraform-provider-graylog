@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_pipeline_rule"
----
-
 # Resource: graylog_pipeline_rule
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/pipeline.tf)

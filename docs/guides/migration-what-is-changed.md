@@ -1,3 +1,8 @@
+---
+page_title: "Changes from go-graylog"
+subcategory: "Migration from go-graylog"
+---
+
 # Changes from go-graylog
 
 In this page, we describe what is changed from [go-graylog](https://github.com/suzuki-shunsuke/go-graylog) to this provider.

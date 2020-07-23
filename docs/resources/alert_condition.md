@@ -1,7 +1,3 @@
----
-page_title: "Graylog: graylog_alert_condition"
----
-
 # Resource: graylog_alert_condition
 
 * [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/alert_condition.tf)
