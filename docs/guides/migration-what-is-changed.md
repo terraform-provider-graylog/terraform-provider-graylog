@@ -1,5 +1,6 @@
 ---
 page_title: "Changes from go-graylog"
+subcategory: "Migration from go-graylog"
 ---
 
 # Changes from go-graylog

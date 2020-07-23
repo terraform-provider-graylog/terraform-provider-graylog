@@ -1,5 +1,6 @@
 ---
 page_title: "Migration Guide"
+subcategory: "Migration from go-graylog"
 ---
 
 # Migration Guide
