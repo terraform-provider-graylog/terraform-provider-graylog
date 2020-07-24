@@ -10,7 +10,7 @@ In this page, we describe what is changed from [go-graylog](https://github.com/s
 ## Changes
 
 * Increase [Acceptance Tests](https://www.terraform.io/docs/extend/testing/acceptance-tests/index.html)
-* [Use JSON string positively](/json-string-attribute)
+* [Use JSON string positively](json-string-attribute)
 * Make the development much easier than go-graylog by design change
 
 ## Design changes

@@ -12,6 +12,14 @@ Terraform Provider for [Graylog](https://docs.graylog.org/)
 
 https://terraform-provider-graylog.github.io
 
+We are migrating the document to [Terraform Registry](https://registry.terraform.io/providers/terraform-provider-graylog/graylog/latest/docs).
+
+## Terraform Registry
+
+https://registry.terraform.io/providers/terraform-provider-graylog/graylog
+
+[Related issue](https://github.com/terraform-provider-graylog/terraform-provider-graylog/issues/34)
+
 ## License
 
 [MIT](LICENSE)

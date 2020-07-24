@@ -62,3 +62,18 @@ session token
 auth_name = "<session token>"
 auth_password = "session"
 ```
+
+## Relation to go-graylog
+
+We originally developed [go-graylog](https://github.com/suzuki-shunsuke/go-graylog), which provides Go's API client and Terraform provider for Graylog.  
+But at go-graylog there are some structural challenges and it is difficult to support Graylog's complicated and undocumented API.  
+So we decided to develop a new provider from scratch as the successor of go-graylog.
+
+This provider supports all resources which are supported by go-graylog.  
+Unfortunately there are some breaking changes and we have to fix Terraform configuration (.tf files) manually to migrate from go-graylog.
+
+For detail, please see the following pages.
+
+* [What is changed from go-graylog?](guides/migration-what-is-changed)
+* [Migration Guide Overview](guides/migration-guide)
+* [Migration Guide Detail](guides/migration-detail)
