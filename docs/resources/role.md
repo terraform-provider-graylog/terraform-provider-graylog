@@ -11,7 +11,7 @@
 
 ## Attributes Reference
 
-* `read_only` - (Optional) The data type is `bool`.
+* `read_only` - The data type is `bool`.
 
 ## Import
 

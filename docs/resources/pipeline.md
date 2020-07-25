@@ -8,7 +8,7 @@
 ### Required Argument
 
 * `source` - (Required) The source of the Pipeline. The data type is `string`.
-* `description` - (Required) The description of the Pipeline. The data type is `string`.
+* `description` - (Optional) The description of the Pipeline. The data type is `string`.
 
 ## Attributes Reference
 

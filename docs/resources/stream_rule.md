@@ -8,7 +8,7 @@
 * `field` - (Required) The data type is `string`.
 * `description` - (Required) The data type is `string`.
 * `type` - (Required) The data type is `int`.
-* `stream_id` - (Required) The data type is `string`.
+* `stream_id` - (Required, Forces new resource) The data type is `string`.
 * `value` - (Optional) The data type is `string`.
 * `inverted` - (Optional) The data type is `bool`.
 

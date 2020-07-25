@@ -11,8 +11,9 @@
 * `priority` - (Required) the priority of the Event Definition. The data type is `int`. 1 (Low), 2 (Normal), 3 (High)
 * `notification_settings` - (Required) the settings of the Event Definition. The data type is `object`.
 * `description` - (Optional) the description of the Event Definition. The data type is `string`.
-* `alert` - (Optional) the description of the Event Definition. The data type is `string`.
+* `alert` - (Optional) The data type is `string`.
 * `field_spec` - (Optional) The data type is `JSON string`.
+* `key_spec` - (Optional) The data type is `[]string`. The default value is `[]`.
 * `notification_settings.grace_period_ms` - (Optional) The data type is `int`.
 * `notification_settings.backlog_size` - (Optional) The data type is `int`.
 * `notifications` - (Optional) The data type is `[]object`. The default value is `[]`.

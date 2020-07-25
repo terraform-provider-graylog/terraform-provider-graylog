@@ -5,7 +5,7 @@
 
 ## Argument Reference
 
-* `stream_id` - (Required) The stream id which the Pipelines are associated with. The data type is `string`.
+* `stream_id` - (Required, Forces new resource) The stream id which the Pipelines are associated with. The data type is `string`.
 * `pipeline_ids` - (Required) The pipeline ids. The data type is `[]string`.
 
 ### Note

@@ -20,7 +20,9 @@ One of `index_set_id` or `title` or `index_prefix` must be set.
 * `description` - the description of the Index Set. The data type is `string`.
 * `replicas` - the number of the replicas of the Index Set. The data type is `int`.
 * `index_optimization_disabled` - The data type is `bool`.
+* `index_optimization_max_num_segments` - The data type is `int`.
 * `default` - The data type is `bool`.
 * `writable` - The data type is `bool`.
 * `creation_date` - The date time when the Index Set is created. The data type is `string`.
 * `id` - Index Set id. The data type is `string`.
+* `field_type_refresh_interval` - The data type is `int`.
