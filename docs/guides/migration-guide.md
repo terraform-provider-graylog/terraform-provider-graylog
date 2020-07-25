@@ -9,7 +9,7 @@ In this page, we describe the overview of how to migrate Terraform provider from
 Unfortunately there are some breaking changes between go-graylog and terraform-provider-graylog, so
 we have to fix Terraform configuration files (.tf) manually.
 
-For detail of the changes of each resources, please see [here](migration/detail.md) also.
+For detail of the changes of each resources, please see [here](migration-detail) also.
 
 ## Migration steps
 

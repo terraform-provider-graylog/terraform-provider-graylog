@@ -16,10 +16,13 @@
 * `description` - (Optional) the description of the Index Set. The data type is `string`.
 * `replicas` - (Optional) the number of the replicas of the Index Set. The data type is `int`.
 * `index_optimization_disabled` - (Optional) The data type is `bool`.
+* `index_optimization_max_num_segments` - (Required) The data type is `int`.
 * `default` - (Optional) The data type is `bool`.
+* `field_type_refresh_interval` - (Optional) The data type is `int`.
 
 ## Attributes Reference
 
+* `writable` - The data type is `bool`.
 * `creation_date` - The date time when the Index Set is created. The data type is `string`.
 
 ## Import

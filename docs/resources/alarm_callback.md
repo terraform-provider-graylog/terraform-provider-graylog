@@ -7,7 +7,7 @@
 
 * `type` - (Required) Alarm Callback type. The data type is `string`.
 * `title` - (Required) Alarm Callback title. The data type is `string`.
-* `stream_id` - (Required) Stream id which the Alarm Callback is associated with. The data type is `string`.
+* `stream_id` - (Required, Forces new resource) Stream id which the Alarm Callback is associated with. The data type is `string`.
 * `configuration` - (Required) configuration of Alarm Callback. The data type is `JSON string`.
 
 ### configuration

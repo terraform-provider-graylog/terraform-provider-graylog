@@ -7,7 +7,7 @@
 
 * `type` - (Required) widget type. The data type is `string`.
 * `description` - (Required) description of the widget. The data type is `string`.
-* `dashboard_id` - (Required) id of the dashboard which the widget is associated with. The data type is `string`.
+* `dashboard_id` - (Required, Forces new resource) id of the dashboard which the widget is associated with. The data type is `string`.
 * `configuration` - (Required) configuration of the widget. The data type is `JSON string`.
 * `cache_time` - (Optional) The data type is `int`.
 

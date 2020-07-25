@@ -16,7 +16,7 @@
 * `extractor_config` - (Required) The data type is `JSON string`.
 * `converters[].type` - (Required) the type of the converter. The data type is `string`.
 * `converters[].config` - (Required) the configuration of the converter. The data type is `JSON string`.
-* `converters` - (Optional) The data type is `list`. The default value is `[]`.
+* `converters` - (Optional) The data type is `[]object`. The default value is `[]`.
 * `target_field` - (Optional) The data type is `string`.
 * `condition_value` - (Optional) The data type is `string`.
 * `order` - (Optional) The data type is `int`.

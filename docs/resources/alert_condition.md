@@ -7,7 +7,7 @@
 
 * `type` - (Required) Alert Condition type. The data type is `string`.
 * `title` - (Required) Alert Condition title. The data type is `string`.
-* `stream_id` - (Required) Stream id which the Alert Condition is associated with. The data type is `string`.
+* `stream_id` - (Required, Forces new resource) Stream id which the Alert Condition is associated with. The data type is `string`.
 * `parameters` - (Required) parameters of Alert Condition. The data type is `JSON string`.
 * `in_grace` - (Opitonal) The data type is `bool`. The default value is `false`.
 

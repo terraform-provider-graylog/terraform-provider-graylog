@@ -5,7 +5,7 @@
 
 ## Argument Reference
 
-* `dashboard_id` - (Required) id of the dashboard which widgets are associated with. The data type is `string`.
+* `dashboard_id` - (Required, Forces new resource) id of the dashboard which widgets are associated with. The data type is `string`.
 * `positions` - (Required) positions of widgets. The data type is `JSON string`.
 
 ### Attributes Reference
