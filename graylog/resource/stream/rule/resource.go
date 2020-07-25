@@ -30,6 +30,10 @@ func Resource() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
+			"type": {
+				Type:     schema.TypeInt,
+				Required: true,
+			},
 
 			// Optional
 			"value": {
@@ -39,10 +43,6 @@ func Resource() *schema.Resource {
 			},
 			"description": {
 				Type:     schema.TypeString,
-				Optional: true,
-			},
-			"type": {
-				Type:     schema.TypeInt,
 				Optional: true,
 			},
 			"inverted": {
