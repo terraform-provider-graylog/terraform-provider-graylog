@@ -11,7 +11,7 @@
 * `password` - (Optonal, Sensitive) The data type is `string`.
 * `roles` - (Optional) The data type is `set of string`.
 * `timezone` - (Optional, Computed) The data type is `string`.
-* `session_timeout_ms` - (Optional, Computed) The data type is `int`.
+* `session_timeout_ms` - (Optional) The data type is `int`. The default value is `3600000`.
 
 ### password
 
