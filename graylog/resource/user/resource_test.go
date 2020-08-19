@@ -53,7 +53,7 @@ func TestAccUser(t *testing.T) {
   "password": "password",
   "full_name": "test test",
   "timezone": "",
-  "session_timeout_ms": 0,
+  "session_timeout_ms": 3600000,
   "roles": ["Reader"],
   "permissions": []
 }`,
@@ -92,7 +92,7 @@ func TestAccUser(t *testing.T) {
     "enableSmartSearch": true
   },
   "timezone": null,
-  "session_timeout_ms": 28800000,
+  "session_timeout_ms": 3600000,
   "external": false,
   "startpage": null,
   "roles": [
@@ -195,7 +195,7 @@ resource "graylog_user" "test" {
     "enableSmartSearch": true
   },
   "timezone": null,
-  "session_timeout_ms": 28800000,
+  "session_timeout_ms": 3600000,
   "external": false,
   "startpage": null,
   "roles": [
