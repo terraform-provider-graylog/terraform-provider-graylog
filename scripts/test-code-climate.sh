@@ -16,8 +16,10 @@ if [ -z "$repo_name" ]; then
   exit 1
 fi
 
-ee curl -L -o /usr/local/bin/cc-test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64
-ee chmod a+x /usr/local/bin/cc-test-reporter
+mkdir -p bin
+export PATH=$PWD/bin:$PATH
+ee curl -L -o bin/cc-test-reporter https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-linux-amd64
+ee chmod a+x bin/cc-test-reporter
 
 ee cc-test-reporter before-build
 
