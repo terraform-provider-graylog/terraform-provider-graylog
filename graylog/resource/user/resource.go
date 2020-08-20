@@ -58,7 +58,7 @@ func Resource() *schema.Resource {
 			"session_timeout_ms": {
 				Type:     schema.TypeInt,
 				Optional: true,
-				Computed: true,
+				Default:  3600000, //nolint:gomnd
 			},
 			"external": {
 				Type:     schema.TypeBool,
