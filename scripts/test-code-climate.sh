@@ -25,12 +25,13 @@ ee cc-test-reporter before-build
 
 ee mkdir -p .code-climate
 
+export TF_ACC=1
 for d in $(go list ./...); do
   echo "$d"
   profile=.code-climate/$d/profile.txt
   coverage=.code-climate/$d/coverage.json
   ee mkdir -p "$(dirname "$profile")" "$(dirname "$coverage")"
-  ee go test -race -coverprofile="$profile" -covermode=atomic "$d"
+  ee go test -v -race -coverprofile="$profile" -covermode=atomic "$d"
   if [ "$(wc -l < "$profile")" -eq 1 ]; then
     continue
   fi
