@@ -45,7 +45,7 @@ jobs:
         curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.29.0
         golangci-lint run
     - name: test
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       run: |
-        bash scripts/codecov_test.sh
-        curl -sS https://codecov.io/bash > /tmp/codecov.sh
-        bash /tmp/codecov.sh
+        bash scripts/test-code-climate.sh "$GITHUB_REPOSITORY"
