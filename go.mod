@@ -1,6 +1,6 @@
 module github.com/terraform-provider-graylog/terraform-provider-graylog
 
-go 1.14
+go 1.15
 
 require (
 	github.com/hashicorp/terraform v0.12.29
