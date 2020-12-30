@@ -9,7 +9,7 @@ resource "graylog_event_definition" "test" {
     query            = "test"
     query_parameters = []
     streams = [
-      "${graylog_stream.test.id}"
+      graylog_stream.test.id
     ],
     search_within_ms = 60000
     execute_every_ms = 60000
@@ -56,7 +56,7 @@ resource "graylog_event_definition" "test2" {
     query            = "test"
     query_parameters = []
     streams = [
-      "${graylog_stream.test.id}"
+      graylog_stream.test.id
     ],
     search_within_ms = 60000
     execute_every_ms = 60000
@@ -65,7 +65,7 @@ resource "graylog_event_definition" "test2" {
     ]
     series = [
       {
-        id       = "${random_uuid.event_definition_test2_series0.result}"
+        id       = random_uuid.event_definition_test2_series0.result
         function = "avg"
         field    = "alert"
       }
@@ -75,7 +75,7 @@ resource "graylog_event_definition" "test2" {
         expr = ">"
         left = {
           expr = "number-ref"
-          ref  = "${random_uuid.event_definition_test2_series0.result}"
+          ref  = random_uuid.event_definition_test2_series0.result
         }
         right = {
           expr  = "number"

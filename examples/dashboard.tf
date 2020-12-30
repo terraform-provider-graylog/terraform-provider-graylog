@@ -51,13 +51,13 @@ resource "graylog_dashboard_widget_positions" "test" {
   dashboard_id = graylog_dashboard_widget.test.dashboard_id
 
   positions = jsonencode({
-    "${graylog_dashboard_widget.test.widget_id}" = {
+    (graylog_dashboard_widget.test.widget_id) = {
       row    = 0
       col    = 0
       height = 1
       width  = 1
     }
-    "${graylog_dashboard_widget.test2.widget_id}" = {
+    (graylog_dashboard_widget.test2.widget_id) = {
       row    = 0
       col    = 1
       height = 2
