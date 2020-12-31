@@ -119,7 +119,7 @@ resource "graylog_stream_output" "test" {
 			Method: "POST",
 			//			BodyJSONString: `{
 			//  "outputs": ["5ea2a4442ab79c001274d9dc", "5e9989962ab79c001156f7db"]
-			//}`,
+			// }`,
 		},
 		Tester: flute.Tester{
 			Path:         postURLPath,

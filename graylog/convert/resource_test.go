@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetResource(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		data  map[string]interface{}
@@ -37,6 +38,7 @@ func TestGetResource(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			a, err := GetResource(d.data, d.rsc)
 			if d.isErr {
 				require.NotNil(t, err)

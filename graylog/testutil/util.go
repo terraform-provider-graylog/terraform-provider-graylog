@@ -35,6 +35,7 @@ func SetEnv() error {
 }
 
 func SetHTTPClient(t *testing.T, routes ...flute.Route) {
+	t.Helper()
 	transport := flute.Transport{
 		T: t,
 		Services: []flute.Service{

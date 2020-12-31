@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetSchema(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		data  interface{}
@@ -75,6 +76,7 @@ func TestGetSchema(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			a, err := GetSchema(d.data, d.sc)
 			if d.isErr {
 				require.NotNil(t, err)
@@ -87,6 +89,7 @@ func TestGetSchema(t *testing.T) {
 }
 
 func TestSetSchema(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		data  interface{}
@@ -131,6 +134,7 @@ func TestSetSchema(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			a, err := SetSchema(d.data, d.sc)
 			if d.isErr {
 				require.NotNil(t, err)
