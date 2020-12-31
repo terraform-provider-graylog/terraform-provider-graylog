@@ -1,7 +1,7 @@
 package extractor
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
@@ -16,7 +16,7 @@ func Resource() *schema.Resource {
 		StateUpgraders: stateUpgraders,
 
 		Importer: &schema.ResourceImporter{
-			State: util.GenStateFunc(keyInputID, keyExtractorID),
+			StateContext: util.GenStateFunc(keyInputID, keyExtractorID),
 		},
 
 		Schema: map[string]*schema.Schema{

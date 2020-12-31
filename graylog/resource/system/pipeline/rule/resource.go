@@ -1,7 +1,7 @@
 package rule
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func Resource() *schema.Resource {
@@ -12,7 +12,7 @@ func Resource() *schema.Resource {
 		Delete: destroy,
 
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 
 		Schema: map[string]*schema.Schema{

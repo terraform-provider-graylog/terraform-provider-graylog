@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/terraform/helper/resource"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/testutil"
 )

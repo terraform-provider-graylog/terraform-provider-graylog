@@ -1,13 +1,14 @@
 package util
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
 	"strings"
 
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/suzuki-shunsuke/go-dataeq/dataeq"
 )
 
@@ -38,8 +39,8 @@ func SchemaDiffSuppressJSONString(k, oldV, newV string, d *schema.ResourceData) 
 	return b
 }
 
-func GenStateFunc(keys ...string) schema.StateFunc {
-	return func(d *schema.ResourceData, m interface{}) ([]*schema.ResourceData, error) {
+func GenStateFunc(keys ...string) schema.StateContextFunc {
+	return func(_ context.Context, d *schema.ResourceData, m interface{}) ([]*schema.ResourceData, error) {
 		a := strings.Split(d.Id(), "/")
 		size := len(keys)
 		if len(a) != size {
@@ -83,7 +84,7 @@ var ValidateIsMapJSON = WrapValidateFunc(func(value interface{}, key string) err
 	return nil
 })
 
-func WrapValidateFunc(f func(v interface{}, k string) error) schema.SchemaValidateFunc {
+func WrapValidateFunc(f func(v interface{}, k string) error) schema.SchemaValidateFunc { //nolint:staticcheck
 	return func(v interface{}, k string) (s []string, es []error) {
 		if err := f(v, k); err != nil {
 			es = append(es, err)

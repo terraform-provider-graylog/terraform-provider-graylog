@@ -1,7 +1,7 @@
 package provider
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/config"
 )
 
@@ -17,7 +17,6 @@ func Configure(d *schema.ResourceData) (interface{}, error) {
 	if err := cfg.LoadAndValidate(); err != nil {
 		return nil, err
 	}
-
 	return cfg, nil
 }
 
