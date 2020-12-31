@@ -18,7 +18,6 @@ func Resource() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"user_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			"username": {
@@ -73,22 +72,18 @@ func Resource() *schema.Resource {
 			},
 			"read_only": {
 				Type:     schema.TypeBool,
-				Optional: true,
 				Computed: true,
 			},
 			"session_active": {
 				Type:     schema.TypeBool,
-				Optional: true,
 				Computed: true,
 			},
 			"last_activity": {
 				Type:     schema.TypeString,
-				Required: false,
 				Computed: true,
 			},
 			"client_address": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

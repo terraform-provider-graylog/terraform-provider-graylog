@@ -67,7 +67,6 @@ func Resource() *schema.Resource {
 			// Optional
 			"creation_date": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			"description": {

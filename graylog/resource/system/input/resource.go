@@ -47,12 +47,10 @@ func Resource() *schema.Resource {
 
 			"created_at": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			"creator_user_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			// "context_pack": &schema.Schema{

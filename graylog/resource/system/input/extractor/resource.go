@@ -86,7 +86,6 @@ func Resource() *schema.Resource {
 
 			"extractor_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},
