@@ -42,7 +42,6 @@ func Resource() *schema.Resource {
 			},
 			"alarmcallback_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

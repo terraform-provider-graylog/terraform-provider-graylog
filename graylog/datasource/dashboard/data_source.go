@@ -21,12 +21,10 @@ func DataSource() *schema.Resource {
 			"description": {
 				Type:     schema.TypeString,
 				Computed: true,
-				Optional: true,
 			},
 
 			"created_at": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

@@ -50,13 +50,11 @@ func Resource() *schema.Resource {
 			},
 			"creator_user_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 
 			"widget_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

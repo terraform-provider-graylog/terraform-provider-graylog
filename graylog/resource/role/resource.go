@@ -31,7 +31,6 @@ func Resource() *schema.Resource {
 			},
 			"read_only": {
 				Type:     schema.TypeBool,
-				Optional: true,
 				Computed: true,
 			},
 		},

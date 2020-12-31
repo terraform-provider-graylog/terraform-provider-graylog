@@ -51,7 +51,6 @@ func Resource() *schema.Resource {
 			},
 			"rule_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

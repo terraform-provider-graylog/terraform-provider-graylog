@@ -29,7 +29,6 @@ func Resource() *schema.Resource {
 			// Optional
 			"created_at": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 		},

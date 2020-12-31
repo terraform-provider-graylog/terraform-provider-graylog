@@ -46,13 +46,11 @@ func Resource() *schema.Resource {
 			// attributes
 			"creator_user_id": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			// outputs
 			"created_at": {
 				Type:     schema.TypeString,
-				Optional: true,
 				Computed: true,
 			},
 			"disabled": {
