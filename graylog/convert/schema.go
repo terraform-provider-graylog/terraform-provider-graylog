@@ -1,7 +1,7 @@
 package convert
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func GetSchema(data interface{}, sc *schema.Schema) (interface{}, error) {

@@ -1,7 +1,7 @@
 package output
 
 import (
-	"github.com/hashicorp/terraform/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/util"
 )
 
@@ -13,7 +13,7 @@ func Resource() *schema.Resource {
 		Delete: destroy,
 
 		Importer: &schema.ResourceImporter{
-			State: schema.ImportStatePassthrough,
+			StateContext: schema.ImportStatePassthroughContext,
 		},
 
 		Schema: map[string]*schema.Schema{

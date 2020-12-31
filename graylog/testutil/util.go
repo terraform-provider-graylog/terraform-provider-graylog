@@ -6,8 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/suzuki-shunsuke/flute/v2/flute"
 	"github.com/terraform-provider-graylog/terraform-provider-graylog/graylog/provider"
 )
@@ -51,9 +50,9 @@ func SetHTTPClient(t *testing.T, routes ...flute.Route) {
 	}
 }
 
-func SingleResourceProviders(name string, rsc *schema.Resource) map[string]terraform.ResourceProvider {
-	return map[string]terraform.ResourceProvider{
-		"graylog": &schema.Provider{
+func SingleResourceProviders(name string, rsc *schema.Resource) map[string]*schema.Provider {
+	return map[string]*schema.Provider{
+		"graylog": {
 			Schema: provider.SchemaMap(),
 			ResourcesMap: map[string]*schema.Resource{
 				name: rsc,
@@ -63,9 +62,9 @@ func SingleResourceProviders(name string, rsc *schema.Resource) map[string]terra
 	}
 }
 
-func SingleDataSourceProviders(name string, rsc *schema.Resource) map[string]terraform.ResourceProvider {
-	return map[string]terraform.ResourceProvider{
-		"graylog": &schema.Provider{
+func SingleDataSourceProviders(name string, rsc *schema.Resource) map[string]*schema.Provider {
+	return map[string]*schema.Provider{
+		"graylog": {
 			Schema: provider.SchemaMap(),
 			DataSourcesMap: map[string]*schema.Resource{
 				name: rsc,

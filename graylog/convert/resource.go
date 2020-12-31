@@ -1,6 +1,6 @@
 package convert
 
-import "github.com/hashicorp/terraform/helper/schema"
+import "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
 func GetResource(
 	data map[string]interface{}, rsc *schema.Resource,
