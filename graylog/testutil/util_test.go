@@ -10,10 +10,12 @@ import (
 )
 
 func TestHeader(t *testing.T) {
+	t.Parallel()
 	require.NotNil(t, Header())
 }
 
 func TestSetEnv(t *testing.T) {
+	t.Parallel()
 	require.Nil(t, SetEnv())
 	require.Equal(t, "http://example.com/api", os.Getenv("GRAYLOG_WEB_ENDPOINT_URI"))
 	require.Equal(t, "admin", os.Getenv("GRAYLOG_AUTH_NAME"))
@@ -21,19 +23,23 @@ func TestSetEnv(t *testing.T) {
 }
 
 func TestSetHTTPClient(t *testing.T) {
+	t.Parallel()
 	routes := []flute.Route{}
 	SetHTTPClient(t, routes...)
 }
 
 func TestSingleResourceProviders(t *testing.T) {
+	t.Parallel()
 	require.NotNil(t, SingleResourceProviders("graylog_dashboard", &schema.Resource{}))
 }
 
 func TestSingleDataSourceProviders(t *testing.T) {
+	t.Parallel()
 	require.NotNil(t, SingleDataSourceProviders("graylog_dashboard", &schema.Resource{}))
 }
 
 func TestEqualMapKeys(t *testing.T) {
+	t.Parallel()
 	data := []struct {
 		title string
 		data  map[string]interface{}
@@ -69,6 +75,7 @@ func TestEqualMapKeys(t *testing.T) {
 	for _, d := range data {
 		d := d
 		t.Run(d.title, func(t *testing.T) {
+			t.Parallel()
 			err := EqualMapKeys(d.data, d.keys...)
 			if d.isErr {
 				require.NotNil(t, err)

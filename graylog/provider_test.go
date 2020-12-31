@@ -7,5 +7,6 @@ import (
 )
 
 func TestProvider(t *testing.T) {
+	t.Parallel()
 	require.NotNil(t, Provider())
 }

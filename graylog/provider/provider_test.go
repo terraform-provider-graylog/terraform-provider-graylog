@@ -7,5 +7,6 @@ import (
 )
 
 func TestSchemaMap(t *testing.T) {
+	t.Parallel()
 	require.NotNil(t, SchemaMap())
 }

@@ -12,3 +12,7 @@ linters:
   - nestif
   - lll
   - gochecknoglobals
+  - nlreturn
+  - exhaustivestruct
+  - paralleltest # TODO
+  - wrapcheck # TODO
