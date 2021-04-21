@@ -2,8 +2,8 @@
 name: CI
 on: [push,pull_request]
 env:
-  tf_version: '0.12.29'
-  tf_working_dir: 'examples/v0.12'
+  tf_version: '0.13.5'
+  tf_working_dir: 'examples'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
     - run: go version
     - run: go mod download
 
-    - run: go build -o examples/v0.12/.terraform/plugins/linux_amd64/terraform-provider-graylog ./cmd/terraform-provider-graylog
+    - run: go build -o examples/.terraform/plugins/linux_amd64/terraform-provider-graylog ./cmd/terraform-provider-graylog
       env:
         CGO_ENABLED: "0"
     - name: 'Terraform Format'

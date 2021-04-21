@@ -1,6 +1,6 @@
 # Resource: graylog_user
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/user.tf)
+* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/user.tf)
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/user/resource.go)
 
 ## Argument Reference

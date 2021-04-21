@@ -1,6 +1,6 @@
 # Resource: graylog_sidecar_configuration
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/sidecar_configuration.tf)
+* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/sidecar_configuration.tf)
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/sidecar/configuration/resource.go)
 
 ## Argument Reference
