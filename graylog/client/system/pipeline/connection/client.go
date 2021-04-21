@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl Client) GetConnectionsOfStream(
+func (cl *Client) GetConnectionsOfStream(
 	ctx context.Context, streamID string,
 ) (map[string]interface{}, *http.Response, error) {
 	if streamID == "" {
@@ -27,7 +27,7 @@ func (cl Client) GetConnectionsOfStream(
 	return body, resp, err
 }
 
-func (cl Client) ConnectPipelinesToStream(
+func (cl *Client) ConnectPipelinesToStream(
 	ctx context.Context, data map[string]interface{},
 ) (*http.Response, error) {
 	if data == nil {

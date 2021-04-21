@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl Client) Update(
+func (cl *Client) Update(
 	ctx context.Context, dashboardID string, data map[string]interface{},
 ) (*http.Response, error) {
 	if dashboardID == "" {

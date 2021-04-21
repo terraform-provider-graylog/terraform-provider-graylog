@@ -9,6 +9,6 @@ type Config struct {
 	APIVersion   string
 }
 
-func (Config) LoadAndValidate() error {
+func (*Config) LoadAndValidate() error {
 	return nil
 }

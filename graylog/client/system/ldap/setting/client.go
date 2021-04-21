@@ -12,7 +12,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl Client) Get(ctx context.Context) (map[string]interface{}, *http.Response, error) {
+func (cl *Client) Get(ctx context.Context) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
@@ -22,7 +22,7 @@ func (cl Client) Get(ctx context.Context) (map[string]interface{}, *http.Respons
 	return body, resp, err
 }
 
-func (cl Client) Update(
+func (cl *Client) Update(
 	ctx context.Context, data map[string]interface{},
 ) (*http.Response, error) {
 	if data == nil {
@@ -36,7 +36,7 @@ func (cl Client) Update(
 	return resp, err
 }
 
-func (cl Client) Delete(ctx context.Context) (*http.Response, error) {
+func (cl *Client) Delete(ctx context.Context) (*http.Response, error) {
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/system/ldap/settings",

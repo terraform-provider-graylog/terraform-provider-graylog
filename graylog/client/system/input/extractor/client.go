@@ -11,7 +11,7 @@ type Client struct {
 	Client httpclient.Client
 }
 
-func (cl Client) Get(ctx context.Context, inputID, id string) (map[string]interface{}, *http.Response, error) {
+func (cl *Client) Get(ctx context.Context, inputID, id string) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method:       "GET",
@@ -21,7 +21,7 @@ func (cl Client) Get(ctx context.Context, inputID, id string) (map[string]interf
 	return body, resp, err
 }
 
-func (cl Client) Create(
+func (cl *Client) Create(
 	ctx context.Context, inputID string, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
@@ -34,7 +34,7 @@ func (cl Client) Create(
 	return body, resp, err
 }
 
-func (cl Client) Update(
+func (cl *Client) Update(
 	ctx context.Context, inputID, id string, data map[string]interface{},
 ) (map[string]interface{}, *http.Response, error) {
 	body := map[string]interface{}{}
@@ -47,7 +47,7 @@ func (cl Client) Update(
 	return body, resp, err
 }
 
-func (cl Client) Delete(ctx context.Context, inputID, id string) (*http.Response, error) {
+func (cl *Client) Delete(ctx context.Context, inputID, id string) (*http.Response, error) {
 	resp, err := cl.Client.Call(ctx, httpclient.CallParams{
 		Method: "DELETE",
 		Path:   "/system/inputs/" + inputID + "/extractors/" + id,
