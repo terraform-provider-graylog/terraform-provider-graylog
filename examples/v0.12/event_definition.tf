@@ -15,7 +15,9 @@ resource "graylog_event_definition" "test" {
     execute_every_ms = 60000
     group_by         = []
     series           = []
-    conditions       = null
+    conditions       = {
+      expression = null
+    }
   })
 
   field_spec = jsonencode({
