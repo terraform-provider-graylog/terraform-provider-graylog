@@ -38,9 +38,11 @@ func Resource() *schema.Resource {
 			"first_name": {
 				Type:	  schema.TypeString,
 				Required: true,
+			},
 			"last_name": {
 				Type:	  schema.TypeString,
 				Required: true,
+			},
 			"permissions": {
 				Type:     schema.TypeSet,
 				Optional: true,
