@@ -21,7 +21,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 
 	ds, _, err := cl.EventDefinition.Create(ctx, data)
 	if err != nil {
-		return fmt.Errorf("failed to create an event definition: %w", err)
+		return fmt.Errorf("failed to create a event definition: %w", err)
 	}
 	d.SetId(ds[keyID].(string))
 	return nil
