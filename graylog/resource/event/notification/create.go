@@ -21,7 +21,7 @@ func create(d *schema.ResourceData, m interface{}) error {
 
 	ds, _, err := cl.EventNotification.Create(ctx, data)
 	if err != nil {
-		return fmt.Errorf("failed to create a event notification: %w", err)
+		return fmt.Errorf("failed to create an event notification: %w", err)
 	}
 	d.SetId(ds[keyID].(string))
 	return nil
