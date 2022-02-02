@@ -17,4 +17,4 @@ _Please check API endpoints by [Graylog API browser](https://docs.graylog.org/en
 
 ## Sample Terraform configuration (.tf) you expect
 
-ex. [Sample of Role](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/v0.3.0/examples/v0.12/role.tf)
+ex. [Sample of Role](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/v0.3.0/examples/role.tf)

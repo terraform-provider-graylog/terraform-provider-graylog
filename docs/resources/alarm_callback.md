@@ -1,6 +1,6 @@
 # Resource: graylog_alarm_callback
 
-* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/alarm_callback.tf)
+* [Example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/alarm_callback.tf)
 * [Source Code](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/graylog/resource/stream/alarmcallback/resource.go)
 
 ## Argument Reference
@@ -14,7 +14,7 @@
 
 `configuration` is a JSON string whose type is `object`.
 The data structure of JSON is different per AlarmCallback `type`.
-Please see the [example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/v0.12/alarm_callback.tf).
+Please see the [example](https://github.com/terraform-provider-graylog/terraform-provider-graylog/blob/master/examples/alarm_callback.tf).
 
 ## Attributes Reference
 
